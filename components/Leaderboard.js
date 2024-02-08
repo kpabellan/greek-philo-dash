@@ -29,15 +29,18 @@ function Leaderboard() {
 
   return (
     <div className="w-3/4 pb-10">
-      <h2 className="text-2xl underline">LEADERBOARD</h2>
-      <div className="grid grid-cols-1 gap-4 mt-4">
+      <h2 className="text-2xl">LEADERBOARD</h2>
+      <div className="grid grid-cols-1 gap-3 mt-4">
         {sortedLeaders.map((leader, index) => (
-          <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-md outline text-center flex justify-between items-center">
-            <h3 className="text-3xl font-semibold">#{index + 1}</h3>
-            <div className="flex-grow flex flex-col items-center">
-              <h3 className="text-xl font-semibold">{leader.organization}</h3>
-              <p className="text-lg">Score: {leader.score}</p>
+          <div key={index} className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center">
+            <div className="flex items-center">
+              <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1}</h3>
+              <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
+                <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
+              </div>
+              <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pl-2 text-black text-left">{leader.organization}</h3>
             </div>
+            <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
           </div>
         ))}
       </div>

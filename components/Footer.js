@@ -5,7 +5,7 @@ export default function Footer() {
     <>
       <hr className="text-gray-400" />
       <div className="flex items-center justify-center py-5">
-        <Image src="/expectmore.png" alt="Expect More" width={200} height={200} />
+        <Image src="/images/expectmore.png" alt="Expect More" width={200} height={200} />
       </div>
     </>
   );
