@@ -10,7 +10,7 @@ function Activities() {
 
   return (
     <div className="w-3/4 pb-10">
-      <h2 className="text-2xl underline">ACTIVITIES</h2>
+      <h2 className="text-2xl">ACTIVITIES</h2>
         <div className="grid grid-cols-1 gap-4 mt-4">
           {Activity.map((activity, index) => (
             <div key={index} className="bg-gray-100 p-4 rounded-lg shadow-md outline text-center">

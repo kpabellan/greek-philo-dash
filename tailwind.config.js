@@ -14,7 +14,10 @@ module.exports = {
       },
     },
     colors: {
-      scblue: '002A49'
+      black: '#000000',
+      white: '#FFFFFF',
+      scblue: '#00A3E0',
+      scyellow: '#FEC141',
     },
   },
   plugins: [],
