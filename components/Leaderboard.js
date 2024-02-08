@@ -36,9 +36,9 @@ function Leaderboard() {
             <div className="flex items-center">
               <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1}</h3>
               <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
-                <img src={`/images/${leader.logo}`} alt={leader.organization} className="w-full h-full rounded-full" />
+                <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
               </div>
-              <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black text-left">{leader.organization}</h3>
+              <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pl-2 text-black text-left">{leader.organization}</h3>
             </div>
             <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
           </div>
