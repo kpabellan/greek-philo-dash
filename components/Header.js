@@ -1,12 +1,14 @@
 export default function Header() {
   return (
     <>
-      <header>
-        <h1 className="text-3xl py-5">
-          ΣX Derby Days '24
-        </h1>
-        <hr className="text-gray-400" />
+      <header className="flex justify-between items-center">
+        <div className="flex items-center">
+          <img src="/images/huntsman.jpg" alt="Sigma Chi Logo" className="h-20" />
+        </div>
+        <p className="ml-auto">ΣX Derby Days '24</p>
+        <hr className="text-white" />
       </header>
+      <hr />
     </>
   );
 }
