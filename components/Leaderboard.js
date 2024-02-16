@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Dropdown from './Dropdown';
 
 function Leaderboard() {
   const [leaders, setLeaders] = useState(null);
+  const [selectedOrganizationType, setSelectedOrganizationType] = useState({ name: 'All' });
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -29,7 +31,10 @@ function Leaderboard() {
 
   return (
     <div className="w-3/4 pb-10">
-      <h2 className="text-2xl">LEADERBOARD</h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl flex-grow">LEADERBOARD</h2>
+        <Dropdown selected={selectedOrganizationType} setSelected={setSelectedOrganizationType} />
+      </div>
       <div className="grid grid-cols-1 gap-3 mt-4">
         {sortedLeaders.map((leader, index) => (
           <div key={index} className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center">
