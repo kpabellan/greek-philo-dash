@@ -7,7 +7,7 @@ function Leaderboard() {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       try {
-        const res = await fetch('/api/leaderboard');
+        const res = await fetch('/api/leaderboard?type=social');
         const data = await res.json();
         
         if (Array.isArray(data.leaders)) {
