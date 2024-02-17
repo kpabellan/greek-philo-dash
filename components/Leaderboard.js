@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { Listbox } from '@headlessui/react';
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
@@ -122,7 +122,6 @@ function Leaderboard() {
         </div>
       </div>
       
-      <h2 className="text-2xl">LEADERBOARD</h2>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart
           layout="vertical" // Use "vertical" layout for bars to grow rightward
