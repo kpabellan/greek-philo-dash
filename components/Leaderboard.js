@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Listbox } from '@headlessui/react';
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
@@ -31,12 +32,64 @@ function Leaderboard() {
     fetchLeaderboard();
   }, [selectedOrganizationType]);
 
+
   if (leaders === null) {
     return <div>Loading...</div>;
   }
 
   const sortedLeaders = [...leaders].sort((a, b) => b.score - a.score);
 
+
+  const data = sortedLeaders.map((leader, index) => ({
+    name: leader.organization,
+    score: Number(leader.score),
+    rank: index + 1,
+  }));
+
+  const CustomTick = (props) => {
+    const { x, y, payload} = props;
+  
+    const imgUrl = `/images/logos/${payload.value}.png`;
+  
+    return (
+      <g transform={`translate(${x},${y})`}>
+          <image href={imgUrl} width={50} height={50} x={-50} y={-25} textAnchor="middle" />
+      </g>
+    );
+  };
+
+  const CustomTooltip = ({ active, payload}) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      
+      return (
+        <div className="custom-tooltip" style={{ backgroundColor: "#fff", padding: "5px", border: "1px solid #ccc" }}>
+          <p style={{ color: "#000" }}>{`${data.name}`}</p>
+          <p style={{ color: "#000" }}>{`${data.score} points`}</p>
+        </div>
+      );
+    }
+  
+    return null;
+  };
+
+  const CustomBarLabel = (props) => {
+    const { x, y, width, value } = props;
+
+    const scoreThreshold = 10; // Adjust this value as needed
+  
+    // Only render the label if the score is above the threshold and the bar is wide enough
+    if (value > scoreThreshold) {
+      return (
+        <text x={x + width / 2} y={y} fill="#666" textAnchor="middle" dominantBaseline="middle">
+          {value}
+        </text>
+      );
+    }
+  
+    return null;
+  };
+  
   return (
     <div className="w-3/4 pb-10">
       <div className="flex justify-between items-center">
@@ -68,21 +121,20 @@ function Leaderboard() {
           </Listbox>
         </div>
       </div>
-
-      <div className="grid grid-cols-1 gap-3 mt-4">
-        {sortedLeaders.map((leader, index) => (
-          <div key={index} className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center">
-            <div className="flex items-center">
-              <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1}</h3>
-              <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
-                <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
-              </div>
-              <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pl-2 text-black text-left">{leader.organization}</h3>
-            </div>
-            <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
-          </div>
-        ))}
-      </div>
+      
+      <h2 className="text-2xl">LEADERBOARD</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart
+          layout="vertical" // Use "vertical" layout for bars to grow rightward
+          data={data}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        >
+          <XAxis type="number" tick={false} axisLine={false}/>
+          <YAxis type="category" dataKey="name" tick={<CustomTick />} width={80} /> {/* Adjust width as needed */}
+          <Tooltip content={<CustomTooltip />} />
+          <Bar dataKey="score" fill="#fec141"/>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }
