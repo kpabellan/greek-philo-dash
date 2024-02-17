@@ -9,7 +9,7 @@ export async function GET(request) {
 
   const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
   const API_KEY = process.env.API_KEY;
-  const RANGE = 'Total points!A1:G';
+  const RANGE = 'Total points!A1:H';
 
   const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
 
