@@ -266,7 +266,7 @@ function Leaderboard() {
       <div className="flex items-center justify-center">
         <button
           onClick={handleToggleClick}
-          className="rounded bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-700"
+          className="bg-blue-500 px-4 py-0 text-white transition duration-300 hover:bg-blue-700"
         >
           {expanded ? "Show Less" : "Show More"}
         </button>
