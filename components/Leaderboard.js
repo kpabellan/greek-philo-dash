@@ -1,215 +1,75 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { Listbox } from "@headlessui/react";
-import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import React, { useState, useEffect } from 'react';
+import { Listbox } from '@headlessui/react';
+import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
 const types = [
-  { organizationType: "All" },
-  { organizationType: "Social" },
-  { organizationType: "Multicultural" },
-  { organizationType: "Professional" },
+  { organizationType: 'All' },
+  { organizationType: 'Social' },
+  { organizationType: 'Multicultural' },
+  { organizationType: 'Professional' },
 ];
 
+const LeaderboardPlaceholder = () => (
+  <div className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center animate-pulse">
+    <div className="flex items-center">
+      <div className="bg-gray-300 h-8 w-8 rounded-md"></div>
+      <div className="ml-2 w-32 bg-gray-300 h-6 rounded-md"></div>
+    </div>
+    <div className="w-16 bg-gray-300 h-6 rounded-md"></div>
+  </div>
+);
+
 function Leaderboard() {
-  const [leaders, setLeaders] = useState(null);
-  const [
-    selectedOrganizationType,
-    setSelectedOrganizationType,
-  ] = useState(types[0]);
+  const [leaders, setLeaders] = useState([]);
+  const [selectedOrganizationType, setSelectedOrganizationType] = useState(types[0]);
+  const [showAll, setShowAll] = useState(false); // State to toggle visibility
+  const [isLoading, setIsLoading] = useState(true); // State to track loading status
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchLeaderboard = async () => {
       try {
-        const res = await fetch(
-          `/api/leaderboard?organizationType=${encodeURIComponent(selectedOrganizationType.organizationType)}`,
-        );
+        const res = await fetch(`/api/leaderboard?organizationType=${encodeURIComponent(selectedOrganizationType.organizationType)}`);
         const data = await res.json();
 
         if (Array.isArray(data.leaders)) {
-          setLeaders(data.leaders);
+          setLeaders(data.leaders.sort((a, b) => b.score - a.score));
+        } else {
+          setLeaders([]);
         }
+        setIsLoading(false);
       } catch (err) {
-        // Handle error
+        setIsLoading(false);
       }
     };
 
     fetchLeaderboard();
   }, [selectedOrganizationType]);
 
-  const [expanded, setExpanded] = useState(false);
-
-  const [displayData, setDisplayData] = useState(
-    [],
-  );
-
-  const [containerHeight, setContainerHeight] =
-    useState(300); // Default height
-
-  useEffect(() => {
-    if (leaders != null) {
-      const sortedLeaders = [...leaders].sort(
-        (a, b) => b.score - a.score,
-      );
-      const limitedLeaders = expanded
-        ? sortedLeaders
-        : sortedLeaders.slice(0, 5);
-      const mappedData = limitedLeaders.map(
-        (leader, index) => ({
-          name: leader.organization,
-          score: Number(leader.score),
-          rank: index + 1,
-        }),
-      );
-      setDisplayData(mappedData);
-    }
-  }, [leaders, expanded]);
-
-  const BAR_HEIGHT = 60;
-  const MAX_BARS_SHOWN = 5;
-
-  useEffect(() => {
-    let numItemsDisplayed = expanded
-      ? leaders?.length ?? 0
-      : Math.min(
-        leaders?.length ?? 0,
-        MAX_BARS_SHOWN,
-      );
-
-    setContainerHeight(
-      BAR_HEIGHT * numItemsDisplayed,
-    );
-  }, [leaders, expanded]);
-
-  // Event handler for the toggle button
-  const handleToggleClick = () => {
-    setExpanded(!expanded);
-  };
-
-  if (displayData.length === 0) {
-    return <div>Loading...</div>;
-  }
-
-  const CustomTick = (props) => {
-    const { x, y, payload } = props;
-
-    const imgUrl = `/images/logos/${payload.value}.png`;
-
-    const rank = payload.index + 1; // Assuming the first tick has a rank of 1
-
-    return (
-      <g transform={`translate(${x},${y})`}>
-        <image
-          href={imgUrl}
-          width={50}
-          height={50}
-          x={-75}
-          y={-25}
-          textAnchor="middle"
-        />
-        <text
-          x={-12} // Centered horizontally at the tick's x position
-          y={7} // Position below the image
-          textAnchor="middle"
-          fill="#FFFFFF"
-          fontSize={"20px"}
-        >
-          {"#" + rank}
-        </text>
-      </g>
-    );
-  };
-
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      const data = payload[0].payload;
-
-      return (
-        <div
-          className="custom-tooltip"
-          style={{
-            backgroundColor: "#fff",
-            padding: "5px",
-            border: "1px solid #ccc",
-          }}
-        >
-          <p
-            style={{ color: "#000" }}
-          >{`${data.name}`}</p>
-          <p
-            style={{ color: "#000" }}
-          >{`${data.score} points`}</p>
-        </div>
-      );
-    }
-
-    return null;
-  };
-
-  const CustomBarLabel = (props) => {
-    const { x, y, width, height, value } = props;
-    const fontSize = Math.min(
-      Math.max(height * 0.6, 10),
-      22,
-    );
-
-    if (width > 50) {
-      return (
-        <text
-          x={x + width / 2}
-          y={y + height / 2}
-          fill="#000"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fontSize={fontSize + "px"}
-        >
-          {value}
-        </text>
-      );
-    }
-
-    return null;
-  };
+  const visibleLeaders = showAll ? leaders : leaders.slice(0, 5);
 
   return (
     <div className="w-3/4 pb-10">
-      <div className="flex items-center justify-between">
-        <h2 className="flex-grow text-2xl">
-          LEADERBOARD
-        </h2>
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl flex-grow">LEADERBOARD</h2>
 
         <div className="relative w-28">
-          <Listbox
-            value={selectedOrganizationType}
-            onChange={setSelectedOrganizationType}
-          >
-            <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-2 pl-2 pr-2 text-left text-sm text-black">
-              {
-                selectedOrganizationType.organizationType
-              }
+          <Listbox value={selectedOrganizationType} onChange={setSelectedOrganizationType}>
+            <Listbox.Button className="relative w-full py-2 pl-2 pr-2 bg-white text-black text-left rounded-md cursor-default text-sm">
+              {selectedOrganizationType.organizationType}
               <span className="absolute inset-y-0 right-0 flex items-center pr-1">
-                <ChevronUpDownIcon
-                  className="h-5 w-5 text-gray-400"
-                  aria-hidden="true"
-                />
+                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </span>
             </Listbox.Button>
-
-            <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-sm text-black shadow-lg">
+            <Listbox.Options className="absolute w-full py-1 mt-1 bg-white text-black overflow-auto rounded-md shadow-lg max-h-60 text-sm z-10">
               {types.map((type, typeIdx) => (
                 <Listbox.Option
                   key={typeIdx}
-                  className={`relative flex cursor-default select-none items-center py-2 pl-2 pr-2 text-left ${selectedOrganizationType === type ? "font-bold" : "font-normal"}`}
-                  value={type}
-                >
-                  <div className="relative flex w-full items-center">
-                    <span
-                      className={`block truncate`}
-                    >
-                      {type.organizationType}
-                    </span>
-                  </div>
+                  className={`relative cursor-default select-none py-2 pl-2 pr-2 text-left flex items-center ${selectedOrganizationType === type ? 'font-bold' : 'font-normal'}`}
+                  value={type}>
+                  <span className="block truncate">{type.organizationType}</span>
                 </Listbox.Option>
               ))}
             </Listbox.Options>
@@ -217,54 +77,42 @@ function Leaderboard() {
         </div>
       </div>
 
-      <ResponsiveContainer
-        width="100%"
-        height={containerHeight}
-      >
-        <BarChart
-          layout="vertical"
-          data={displayData}
-          margin={{
-            top: 20,
-            right: 0,
-            left: 20,
-            bottom: 0,
-          }}
-        >
-          <XAxis
-            type="number"
-            tick={false}
-            axisLine={false}
-          />
-
-          <YAxis
-            type="category"
-            dataKey="name"
-            axisLine={false}
-            tickLine={false}
-            tick={<CustomTick />}
-          />
-
-          <Tooltip content={<CustomTooltip />} />
-          <Bar
-            dataKey="score"
-            fill="#fec141"
-            radius={5}
-            animationDuration={800}
-            animationEasing="ease-in-out"
-            label={<CustomBarLabel />}
-          />
-        </BarChart>
-      </ResponsiveContainer>
-
-      <div className="flex items-center justify-center">
-        <button
-          onClick={handleToggleClick}
-          className="bg-blue-500 px-4 py-0 text-white transition duration-300 hover:bg-blue-700"
-        >
-          {expanded ? "Show Less" : "Show More"}
-        </button>
-      </div>
+      {isLoading ? (
+        <>
+          <div className="grid grid-cols-1 gap-3 mt-4">
+            {Array.from({ length: showAll ? 10 : 5 }).map((_, index) => (
+              <LeaderboardPlaceholder key={index} />
+            ))}
+          </div>
+          <div className="mt-4 flex justify-center">
+            <div className="py-2 px-4">‎ </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 gap-3 mt-4">
+            {visibleLeaders.map((leader, index) => (
+              <div key={index} className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center">
+                <div className="flex items-center">
+                  <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1}</h3>
+                  <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
+                    <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
+                  </div>
+                  <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pl-2 text-black text-left">{leader.organization}</h3>
+                </div>
+                <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
+              </div>
+            ))}
+          </div>
+          {leaders.length > 5 && (
+            <div className="mt-4 flex justify-center">
+              <button onClick={() => setShowAll(!showAll)} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                {showAll ? 'Show Less' : 'View More'}
+              </button>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
