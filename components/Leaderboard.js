@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Listbox } from '@headlessui/react';
 import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
@@ -27,6 +28,11 @@ function Leaderboard() {
   const [showAll, setShowAll] = useState(false); // State to toggle visibility
   const [isLoading, setIsLoading] = useState(true); // State to track loading status
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   useEffect(() => {
     setIsLoading(true);
     const fetchLeaderboard = async () => {
@@ -48,7 +54,8 @@ function Leaderboard() {
     fetchLeaderboard();
   }, [selectedOrganizationType]);
 
-  const visibleLeaders = showAll ? leaders : leaders.slice(0, 5);
+  const initialLeaders = leaders.slice(0, 5);
+  const additionalLeaders = showAll ? leaders.slice(5) : [];
 
   return (
     <div className="w-3/4 pb-10">
@@ -91,8 +98,12 @@ function Leaderboard() {
       ) : (
         <>
           <div className="grid grid-cols-1 gap-3 mt-4">
-            {visibleLeaders.map((leader, index) => (
-              <div key={index} className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center">
+
+            {initialLeaders.map((leader, index) => (
+              <div
+                key={index}
+                className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
+              >
                 <div className="flex items-center">
                   <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1}</h3>
                   <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
@@ -103,6 +114,27 @@ function Leaderboard() {
                 <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
               </div>
             ))}
+
+            {additionalLeaders.map((leader, index) => (
+              <motion.div
+                key={`additional-${index}`}
+                className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+              >
+                <div className="flex items-center">
+                  <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1 + initialLeaders.length}</h3>
+                  <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
+                    <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
+                  </div>
+                  <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pl-2 text-black text-left">{leader.organization}</h3>
+                </div>
+                <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
+              </motion.div>
+            ))}
+
           </div>
           {leaders.length > 5 && (
             <div className="mt-4 flex justify-center">
