@@ -28,7 +28,12 @@ function Leaderboard() {
   const [showAll, setShowAll] = useState(false); // State to toggle visibility
   const [isLoading, setIsLoading] = useState(true); // State to track loading status
 
-  const itemVariants = {
+  const itemVariantFadeIn = {
+    hidden: { opacity: 0.5, y: 0 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const itemVariantSlideUp = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
@@ -102,9 +107,13 @@ function Leaderboard() {
           <div className="grid grid-cols-1 gap-3 mt-4">
 
             {initialLeaders.map((leader, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
+                variants={itemVariantFadeIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
               >
                 <div className="flex items-center">
                   <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1}</h3>
@@ -114,14 +123,14 @@ function Leaderboard() {
                   <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pl-2 text-black text-left">{leader.organization}</h3>
                 </div>
                 <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
-              </div>
+              </motion.div>
             ))}
 
             {additionalLeaders.map((leader, index) => (
               <motion.div
                 key={`additional-${index}`}
                 className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
-                variants={itemVariants}
+                variants={itemVariantSlideUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
