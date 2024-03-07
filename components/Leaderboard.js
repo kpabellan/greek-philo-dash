@@ -45,8 +45,10 @@ function Leaderboard() {
         } else {
           setLeaders([]);
         }
+        setShowAll(false);
         setIsLoading(false);
       } catch (err) {
+        setShowAll(false);
         setIsLoading(false);
       }
     };
