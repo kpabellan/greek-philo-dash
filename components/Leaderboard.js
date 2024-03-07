@@ -1,16 +1,7 @@
 "use client";
-import React, {
-  useState,
-  useEffect,
-} from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+
+import React, { useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
 
@@ -82,9 +73,9 @@ function Leaderboard() {
     let numItemsDisplayed = expanded
       ? leaders?.length ?? 0
       : Math.min(
-          leaders?.length ?? 0,
-          MAX_BARS_SHOWN,
-        );
+        leaders?.length ?? 0,
+        MAX_BARS_SHOWN,
+      );
 
     setContainerHeight(
       BAR_HEIGHT * numItemsDisplayed,
@@ -235,7 +226,7 @@ function Leaderboard() {
           data={displayData}
           margin={{
             top: 20,
-            right: 30,
+            right: 0,
             left: 20,
             bottom: 0,
           }}
@@ -245,6 +236,7 @@ function Leaderboard() {
             tick={false}
             axisLine={false}
           />
+
           <YAxis
             type="category"
             dataKey="name"
@@ -252,10 +244,12 @@ function Leaderboard() {
             tickLine={false}
             tick={<CustomTick />}
           />
+
           <Tooltip content={<CustomTooltip />} />
           <Bar
             dataKey="score"
             fill="#fec141"
+            radius={5}
             animationDuration={800}
             animationEasing="ease-in-out"
             label={<CustomBarLabel />}
