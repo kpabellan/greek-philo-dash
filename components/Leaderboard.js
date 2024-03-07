@@ -99,7 +99,7 @@ function Leaderboard() {
             ))}
           </div>
           <div className="mt-4 flex justify-center">
-            <div className="py-2 px-4">‎ </div>
+            <div className="py-2 px-4">‎</div>
           </div>
         </>
       ) : (
