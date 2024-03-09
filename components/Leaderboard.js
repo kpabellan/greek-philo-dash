@@ -27,16 +27,20 @@ function Leaderboard() {
   const [selectedOrganizationType, setSelectedOrganizationType] = useState(types[0]);
   const [showAll, setShowAll] = useState(false); // State to toggle visibility
   const [isLoading, setIsLoading] = useState(true); // State to track loading status
+  const [windowWidth, setWindowWidth] = useState(undefined); // State to track window width
 
-  const itemVariantFadeIn = {
-    hidden: { opacity: 0.5, y: 0 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
+  useEffect(() => {
+    const updateWidth = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
-  const itemVariantSlideUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
+    if (typeof window !== 'undefined') {
+      updateWidth();
+      window.addEventListener('resize', updateWidth);
+
+      return () => window.removeEventListener('resize', updateWidth);
+    }
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -63,6 +67,44 @@ function Leaderboard() {
 
   const initialLeaders = leaders.slice(0, 5);
   const additionalLeaders = showAll ? leaders.slice(5) : [];
+  const isDesktop = windowWidth >= 1024;
+
+  const itemVariantFadeIn = {
+    hidden: { opacity: 0.5, y: 0 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const itemVariantSlideUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const DesktopLayout = ({ leader, index }) => (
+    <>
+      <div className="flex items-center">
+        <h3 className="text-3xl text-black">#{index + 1}</h3>
+        <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
+          <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
+        </div>
+        <h3 className="text-3xl pl-2 text-black text-left">{leader.organization}</h3>
+      </div>
+      <p className="text-3xl text-black ">{leader.score}</p>
+    </>
+  );
+
+  const MobileLayout = ({ leader, index }) => (
+    <div className="flex items-center justify-between w-full">
+      <div className="flex items-center">
+        <h3 className="text-3xl text-black">#{index + 1}</h3>
+        <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
+          <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
+        </div>
+      </div>
+      <div className="flex-1 flex justify-center">
+        <h3 className="text-3xl text-black text-center">{leader.score}</h3>
+      </div>
+    </div>
+  );
 
   return (
     <div className="w-3/4 pb-10">
@@ -115,14 +157,7 @@ function Leaderboard() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <div className="flex items-center">
-                  <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1}</h3>
-                  <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
-                    <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
-                  </div>
-                  <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pl-2 text-black text-left">{leader.organization}</h3>
-                </div>
-                <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
+                {isDesktop ? <DesktopLayout leader={leader} index={index} /> : <MobileLayout leader={leader} index={index} />}
               </motion.div>
             ))}
 
@@ -135,14 +170,7 @@ function Leaderboard() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <div className="flex items-center">
-                  <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-black">#{index + 1 + initialLeaders.length}</h3>
-                  <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
-                    <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
-                  </div>
-                  <h3 className="sm:text-lg md:text-xl lg:text-2xl xl:text-3xl pl-2 text-black text-left">{leader.organization}</h3>
-                </div>
-                <p className="max-w-5xl sm:text-sm md:text-base lg:text-lg xl:text-xl text-black font-semibold">{leader.score}</p>
+                {isDesktop ? <DesktopLayout leader={leader} index={index + initialLeaders.length} /> : <MobileLayout leader={leader} index={index + initialLeaders.length} />}
               </motion.div>
             ))}
 
