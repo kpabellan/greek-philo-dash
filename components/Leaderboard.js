@@ -88,7 +88,7 @@ function Leaderboard() {
         </div>
         <h3 className="text-3xl pl-2 text-black text-left">{leader.organization}</h3>
       </div>
-      <p className="text-3xl text-black ">{leader.score}</p>
+      <p className="text-3xl text-black">{leader.score.toLocaleString()}</p>
     </>
   );
 
@@ -101,7 +101,7 @@ function Leaderboard() {
         </div>
       </div>
       <div className="flex-1 flex justify-center">
-        <h3 className="text-3xl text-black text-center">{leader.score}</h3>
+        <h3 className="text-3xl text-black text-center">{leader.score.toLocaleString()}</h3>
       </div>
     </div>
   );
