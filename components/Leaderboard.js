@@ -95,7 +95,7 @@ function Leaderboard() {
   const MobileLayout = ({ leader, index }) => (
     <div className="flex items-center justify-between w-full">
       <div className="flex items-center">
-        <h3 className="text-3xl text-black">#{index + 1}</h3>
+        <h3 className="text-xl text-black">#{index + 1}</h3>
         <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
           <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
         </div>
