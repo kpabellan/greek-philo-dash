@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import Modal from "./Modal";
 
 const imageData = [
   { src: "https://picsum.photos/id/240/600/400", credit: "John Doe", organization: "ΑΑΑ" },
@@ -10,20 +11,23 @@ const imageData = [
 ];
 
 function Photos() {
-  const [isLoading, setIsLoading] = useState(true);
   const [slide, setSlide] = useState(0);
-
-  const changeSlide = (newSlide) => {
-    setIsLoading(true);
-    setSlide(newSlide);
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const nextSlide = () => {
-    changeSlide(slide === imageData.length - 1 ? 0 : slide + 1);
+    setSlide(slide === imageData.length - 1 ? 0 : slide + 1);
   };
 
   const prevSlide = () => {
-    changeSlide(slide === 0 ? imageData.length - 1 : slide - 1);
+    setSlide(slide === 0 ? imageData.length - 1 : slide - 1);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { src, credit, organization } = event.target.elements;
+    console.log('Submitted data:', src.value, credit.value, organization.value);
+    // Send data
+    setIsModalOpen(false);
   };
 
   return (
@@ -31,21 +35,10 @@ function Photos() {
       <h2 className="text-2xl">FEATURED PHOTOS</h2>
       <div className="flex justify-center items-center relative mt-4 noSelect">
         <BsArrowLeftCircleFill onClick={prevSlide} className="absolute left-1 z-10 cursor-pointer text-3xl text-gray-800" />
-        {isLoading && (
-          <div
-            style={{
-              width: "600px",
-              height: "400px",
-              backgroundColor: "#f3f3f3",
-              animation: "pulse 2s infinite",
-            }}
-          />
-        )}
         {imageData.map((item, idx) => (
           <img
             src={item.src}
             key={idx}
-            onLoad={() => setIsLoading(false)}
             className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-auto`}
           />
         ))}
@@ -55,6 +48,8 @@ function Photos() {
         <p className="text-sm"><i>Credit: {imageData[slide].credit} &nbsp;&bull;&nbsp; Organization: {imageData[slide].organization}</i></p>
       </div>
       <p>Want to submit a photo?</p>
+      <button onClick={() => setIsModalOpen(true)}>Submit</button>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleSubmit} />
     </div>
   );
 };
