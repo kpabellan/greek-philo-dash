@@ -23,4 +23,11 @@
     background: #9CA3AF;
     border-radius: 5px;
   }
+
+  .noSelect {
+    -webkit-user-select: none;    
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 }
