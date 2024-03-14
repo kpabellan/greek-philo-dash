@@ -22,14 +22,6 @@ function Photos() {
     setSlide(slide === 0 ? imageData.length - 1 : slide - 1);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const { src, credit, organization } = event.target.elements;
-    console.log('Submitted data:', src.value, credit.value, organization.value);
-    // Send data
-    setIsModalOpen(false);
-  };
-
   return (
     <div className="w-3/4 pb-10">
       <h2 className="text-2xl">FEATURED PHOTOS</h2>
@@ -51,7 +43,7 @@ function Photos() {
         Want to submit a photo? &nbsp;
         <button className="underline" onClick={() => setIsModalOpen(true)}>Click Here</button>
       </p>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleSubmit} />
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };
