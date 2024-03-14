@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { AiOutlineLoading3Quarters, AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import { useToast } from '../context/Toast';
 
 function Modal({ isOpen, onClose }) {
   const { showToast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [fail, setFail] = useState(false);
 
   useEffect(() => {
     const preventScroll = (e) => e.preventDefault();
@@ -13,16 +17,25 @@ function Modal({ isOpen, onClose }) {
     } else {
       window.removeEventListener('wheel', preventScroll);
       window.removeEventListener('touchmove', preventScroll);
+      resetStates();
     }
 
     return () => {
       window.removeEventListener('wheel', preventScroll);
       window.removeEventListener('touchmove', preventScroll);
+      resetStates();
     };
   }, [isOpen]);
 
+  const resetStates = () => {
+    setLoading(false);
+    setSuccess(false);
+    setFail(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     const formData = new FormData();
     const fileField = document.querySelector('input[type="file"]');
     const nameField = document.querySelector('input[name="name"]');
@@ -43,15 +56,26 @@ function Modal({ isOpen, onClose }) {
       .then(data => {
         if (data.url) {
           console.log('Upload successful');
+          setSuccess(true);
+          setTimeout(() => {
+            onClose();
+            resetStates();
+          }, 1000);
           showToast('Photo submitted successfully', 'success');
-          onClose();
         } else {
           throw new Error('The response does not contain a URL');
         }
       })
       .catch((error) => {
         console.error('Upload failed', error);
+        setFail(true);
+        setTimeout(() => {
+          resetStates();
+        }, 3000);
         showToast('Error submitting photo', 'error');
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -96,9 +120,27 @@ function Modal({ isOpen, onClose }) {
               </select>
             </div>
 
-            <div className="mt-4 flex justify-end">
-              <button type="button" onClick={onClose} className="mr-2">Cancel</button>
-              <button type="submit">Submit</button>
+            <div className="mt-4 flex justify-between">
+              <button type="button" onClick={onClose} className='w-24 bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ring-1 ring-white'>
+                <p>Cancel</p>
+              </button>
+              {loading ? (
+                <button className='w-24 bg-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ring-1 ring-white' type='submit' disabled={loading}>
+                  <AiOutlineLoading3Quarters className='inline-block w-6 h-6 animate-spin' />
+                </button>
+              ) : success ? (
+                <button className='w-24 bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ring-1 ring-white' type='submit' disabled={success}>
+                  <AiOutlineCheckCircle className='inline-block w-6 h-6' />
+                </button>
+              ) : fail ? (
+                <button className='w-24 bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ring-1 ring-white' type='submit' disabled={fail}>
+                  <AiOutlineCloseCircle className='inline-block w-6 h-6' />
+                </button>
+              ) : (
+                <button className='w-24 bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ring-1 ring-white' type='submit'>
+                  <p>Submit</p>
+                </button>
+              )}
             </div>
           </div>
         </form>

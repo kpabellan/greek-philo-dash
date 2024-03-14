@@ -13,8 +13,8 @@ export const ToastProvider = ({ children }) => {
 
     const options = {
       position: "top-right",
-      autoClose: 1000,
-      hideProgressBar: false,
+      autoClose: 1500,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: false,
       draggable: false,
