@@ -1,7 +1,7 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Modal from "./Modal";
 
@@ -22,6 +22,13 @@ function Photos() {
   const prevSlide = () => {
     setSlide(slide === 0 ? imageData.length - 1 : slide - 1);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [slide]);
 
   return (
     <div className="w-3/4 pb-10">
