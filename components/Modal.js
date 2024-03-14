@@ -99,8 +99,8 @@ function Modal({ isOpen, onClose }) {
 
             <div>
               <label>Organization</label>
-              <select id="orgs" name="orgs" className="border rounded p-2 w-full h-12 text-xl bg-white text-black" required>
-                <option value="" disabled selected>Select your organization</option>
+              <select id="orgs" name="orgs" className="border rounded p-2 w-full h-12 text-xl bg-white text-black" defaultValue="" required>
+                <option value="" disabled>Select your organization</option>
                 <option value="Delta Delta Delta">ΔΔΔ</option>
                 <option value="Delta Gamma">ΔΓ</option>
                 <option value="Kappa Kappa Gamma">ΚΚΓ</option>
