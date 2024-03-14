@@ -9,10 +9,16 @@ export async function POST(request) {
   try {
     const data = await request.formData();
     const file = data.get('file');
+    const name = data.get('name');
+    const organization = data.get('organization');
+    const uniqueIdentifier = Date.now();
+
+    const fileName = `${name}-${organization}-${uniqueIdentifier}`;
 
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', uploadPreset);
+    formData.append('public_id', fileName);
 
     const response = await fetch(cloudinaryURL, {
       method: 'POST',

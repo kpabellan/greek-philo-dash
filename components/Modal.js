@@ -42,6 +42,8 @@ function Modal({ isOpen, onClose }) {
     const organizationField = document.querySelector('select[name="orgs"]');
 
     formData.append('file', fileField.files[0]);
+    formData.append('name', nameField.value);
+    formData.append('organization', organizationField.value);
 
     fetch(`/api/photos`, {
       method: 'POST',
