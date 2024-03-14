@@ -10,15 +10,15 @@ function Modal({ isOpen, onClose, onSubmit }) {
         <form onSubmit={onSubmit}>
           <div>
             <label>Image URL</label>
-            <input type="text" name="src" required className="border rounded p-2 w-full" />
+            <input type="file" name="src" required className="border rounded p-2 w-full bg-white text-black" />
           </div>
           <div>
             <label>Credit</label>
-            <input type="text" name="credit" required className="border rounded p-2 w-full" />
+            <input type="text" name="credit" required className="border rounded p-2 w-full text-black" />
           </div>
           <div>
             <label>Organization</label>
-            <input type="text" name="organization" required className="border rounded p-2 w-full" />
+            <input type="text" name="organization" required className="border rounded p-2 w-full text-black" />
           </div>
           <div className="mt-4 flex justify-end">
             <button type="button" onClick={onClose} className="mr-2">Cancel</button>

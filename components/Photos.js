@@ -47,8 +47,10 @@ function Photos() {
       <div className="text-center">
         <p className="text-sm"><i>Credit: {imageData[slide].credit} &nbsp;&bull;&nbsp; Organization: {imageData[slide].organization}</i></p>
       </div>
-      <p>Want to submit a photo?</p>
-      <button onClick={() => setIsModalOpen(true)}>Submit</button>
+      <p>
+        Want to submit a photo? &nbsp;
+        <button className="underline" onClick={() => setIsModalOpen(true)}>Click Here</button>
+      </p>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleSubmit} />
     </div>
   );
