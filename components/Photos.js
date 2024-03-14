@@ -26,7 +26,7 @@ function Photos() {
     <div className="w-3/4 pb-10">
       <h2 className="text-2xl">FEATURED PHOTOS</h2>
       <div className="flex justify-center items-center relative mt-4 noSelect">
-        <BsArrowLeftCircleFill onClick={prevSlide} className="absolute left-1 z-1 cursor-pointer text-3xl text-gray-800" />
+        <BsArrowLeftCircleFill onClick={prevSlide} className="absolute left-1 z-10 cursor-pointer text-3xl text-gray-800" />
         {imageData.map((item, idx) => (
           <img
             src={item.src}
@@ -34,7 +34,7 @@ function Photos() {
             className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-auto`}
           />
         ))}
-        <BsArrowRightCircleFill onClick={nextSlide} className="absolute right-1 z-1 cursor-pointer text-3xl text-gray-800" />
+        <BsArrowRightCircleFill onClick={nextSlide} className="absolute right-1 z-10 cursor-pointer text-3xl text-gray-800" />
       </div>
       <div className="text-center">
         <p className="text-sm"><i>Credit: {imageData[slide].credit} &nbsp;&bull;&nbsp; Organization: {imageData[slide].organization}</i></p>
@@ -43,9 +43,7 @@ function Photos() {
         Want to submit a photo? &nbsp;
         <button className="underline" onClick={() => setIsModalOpen(true)}>Click Here</button>
       </p>
-      <div className="z-2">
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-      </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

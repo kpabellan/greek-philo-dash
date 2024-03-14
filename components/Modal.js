@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import { useToast } from '../context/Toast';
 
 function Modal({ isOpen, onClose }) {
   const { showToast } = useToast();
+
+  useEffect(() => {
+    const preventScroll = (e) => e.preventDefault();
+
+    if (isOpen) {
+      window.addEventListener('wheel', preventScroll, { passive: false });
+      window.addEventListener('touchmove', preventScroll, { passive: false });
+    } else {
+      window.removeEventListener('wheel', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
+    }
+
+    return () => {
+      window.removeEventListener('wheel', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
+    };
+  }, [isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,8 +58,8 @@ function Modal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-      <div className="bg-scblue p-5 rounded">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
+      <div className="bg-scblue p-5 rounded-lg overflow-hidden w-10/12 md:w-1/4 z-15">
         <h2 className="text-xl mb-4">Submit a Photo</h2>
         <form onSubmit={handleSubmit}>
           <div>
