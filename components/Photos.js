@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import React, { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Modal from "./Modal";
@@ -28,9 +29,10 @@ function Photos() {
       <div className="flex justify-center items-center relative mt-4 noSelect">
         <BsArrowLeftCircleFill onClick={prevSlide} className="absolute left-1 z-10 cursor-pointer text-3xl text-gray-800" />
         {imageData.map((item, idx) => (
-          <img
+          <Image
             src={item.src}
             key={idx}
+            alt={`Photo ${idx + 1}`}
             className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-auto`}
           />
         ))}

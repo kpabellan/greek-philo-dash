@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 
 function Activities() {
   const [expandedActivityIndex, setExpandedActivityIndex] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const activities = [
+  const activities = useMemo(() => [
     {
       Day: "Monday",
       Activity: "Philanthropy Event",
@@ -38,8 +38,7 @@ function Activities() {
       MoreInfo:
         "Lorem ipsum dolor sit amet, id usu corpora consulatu conclusionemque, ius ad tollit integre quaeque. Has assum aliquip reprimique an, eam velit efficiantur cu. Cum id tollit nominavi sadipscing, vide dolorum mandamus vim an. Cum te nobis homero omnium, te duo scaevola probatus iracundia. Usu discere constituam eloquentiam ei.",
     },
-  ];
-
+  ], []);
 
   useEffect(() => {
     const currentDay = new Date().toLocaleString('en-us', { weekday: 'long' });
@@ -48,7 +47,7 @@ function Activities() {
       setExpandedActivityIndex(currentDayActivityIndex);
     }
     setIsLoading(false);
-  }, []); // Dependency array empty to run only on mount
+  }, [activities]);
 
   // Toggle visibility of activity details
   const toggleActivity = index => {
