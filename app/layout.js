@@ -2,6 +2,7 @@ import "./globals.css";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { ToastProvider } from '../context/Toast';
 
 export const metadata = {
   title: "UCM ΣX Derby Days 2024",
@@ -10,12 +11,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-  <html>
-    <body>
-      <Header />
-      {children}
-      <Footer />
-    </body>
-  </html>
+    <html>
+      <body>
+        <ToastProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ToastProvider>
+      </body>
+    </html>
   );
 }
