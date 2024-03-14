@@ -60,7 +60,7 @@ function Modal({ isOpen, onClose }) {
           setTimeout(() => {
             onClose();
             resetStates();
-          }, 1000);
+          }, 2000);
           showToast('Photo submitted successfully', 'success');
         } else {
           throw new Error('The response does not contain a URL');
