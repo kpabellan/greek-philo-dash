@@ -42,16 +42,18 @@ function Modal({ isOpen, onClose }) {
     const organizationField = document.querySelector('select[name="orgs"]');
 
     formData.append('file', fileField.files[0]);
+    formData.append('name', nameField.value);
+    formData.append('organization', organizationField.value);
 
-    fetch(`/api/photos`, {
+    fetch(`/api/upload`, {
       method: 'POST',
       body: formData,
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
         }
-        return response.json();
+        return res.json();
       })
       .then(data => {
         if (data.url) {
@@ -82,7 +84,7 @@ function Modal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 drop-shadow-md">
       <div className="bg-scblue p-5 rounded-lg overflow-hidden w-10/12 md:w-1/4 z-15">
         <h2 className="text-xl mb-4">Submit a Photo</h2>
         <form onSubmit={handleSubmit}>
@@ -101,6 +103,7 @@ function Modal({ isOpen, onClose }) {
               <label>Organization</label>
               <select id="orgs" name="orgs" className="border rounded p-2 w-full h-12 text-xl bg-white text-black" defaultValue="" required>
                 <option value="" disabled>Select your organization</option>
+                <option value="Sigma Chi">ΣΧ</option>
                 <option value="Delta Delta Delta">ΔΔΔ</option>
                 <option value="Delta Gamma">ΔΓ</option>
                 <option value="Kappa Kappa Gamma">ΚΚΓ</option>

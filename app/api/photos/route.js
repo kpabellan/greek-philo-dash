@@ -1,47 +1,27 @@
+import { NextResponse } from "next/server";
 import dotenv from 'dotenv';
 
-export async function POST(request) {
-  dotenv.config();
+dotenv.config();
 
-  const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
-  const cloudinaryURL = `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`;
+export async function GET() {
+  const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
+  const API_KEY = process.env.API_KEY;
+  const RANGE = 'Photos!I10:K20';
+
+  const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
 
   try {
-    const data = await request.formData();
-    const file = data.get('file');
+    const response = await fetch(apiUrl, { cache: "no-store" });
+    const { values } = await response.json();
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', uploadPreset);
+    const imageData = values.map(([src, credit, organization]) => ({
+      src,
+      credit,
+      organization,
+    }));
 
-    const response = await fetch(cloudinaryURL, {
-      method: 'POST',
-      body: formData,
-    });
-
-    const result = await response.json();
-
-    if (result.secure_url) {
-      return new Response(JSON.stringify({ message: 'Upload successful', url: result.secure_url }), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } else {
-      return new Response(JSON.stringify({ message: 'Upload failed', error: result }), {
-        status: 500,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    }
+    return NextResponse.json({ imageData }, { status: 200 });
   } catch (error) {
-    return new Response(JSON.stringify({ message: 'Upload failed', error: error.toString() }), {
-      status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    return NextResponse.json({ error: "error" }, { status: 500 });
   }
 }
