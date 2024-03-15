@@ -15,7 +15,7 @@ function Photos() {
     const fetchImageData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch(`/api/photos`);
+        const res = await fetch(`/api/photosapi`);
         if (!res.ok) throw new Error('Network response was not ok');
         const data = await res.json();
         setImageData(data.imageData);
