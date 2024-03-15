@@ -45,15 +45,15 @@ function Modal({ isOpen, onClose }) {
     formData.append('name', nameField.value);
     formData.append('organization', organizationField.value);
 
-    fetch(`/api/photos`, {
+    fetch(`/api/upload`, {
       method: 'POST',
       body: formData,
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
         }
-        return response.json();
+        return res.json();
       })
       .then(data => {
         if (data.url) {

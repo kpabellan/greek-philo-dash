@@ -5,15 +5,33 @@ import React, { useEffect, useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Modal from "./Modal";
 
-const imageData = [
-  { src: "https://picsum.photos/id/240/600/400", credit: "John Doe", organization: "ΑΑΑ" },
-  { src: "https://picsum.photos/id/250/600/400", credit: "Jane Doe", organization: "ΑΑΑ" },
-  { src: "https://picsum.photos/id/260/600/400", credit: "Jim Doe", organization: "ΑΑΑ" },
-];
-
 function Photos() {
+  const [imageData, setImageData] = useState([]);
   const [slide, setSlide] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchImageData = async () => {
+      try {
+        const res = await fetch('/api/photos');
+        if (!res.ok) throw new Error('Network response was not ok');
+        const data = await res.json();
+        setImageData(data.imageData);
+        setSlide(0);
+      } catch (error) {
+        console.error('Failed to fetch image data:', error);
+      }
+    };
+
+    fetchImageData();
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [slide]);
 
   const nextSlide = () => {
     setSlide(slide === imageData.length - 1 ? 0 : slide + 1);
@@ -23,12 +41,9 @@ function Photos() {
     setSlide(slide === 0 ? imageData.length - 1 : slide - 1);
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [slide]);
+  if (imageData.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="w-3/4 pb-10">
@@ -40,8 +55,9 @@ function Photos() {
             src={item.src}
             key={idx}
             alt={`Photo ${idx + 1}`}
-            width={600} 
+            width={600}
             height={400}
+            priority
             className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-auto`}
           />
         ))}
