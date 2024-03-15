@@ -84,7 +84,7 @@ function Modal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 drop-shadow-md">
       <div className="bg-scblue p-5 rounded-lg overflow-hidden w-10/12 md:w-1/4 z-15">
         <h2 className="text-xl mb-4">Submit a Photo</h2>
         <form onSubmit={handleSubmit}>
