@@ -60,8 +60,8 @@ function Photos() {
                 src={item.src}
                 key={idx}
                 alt={`Photo ${idx + 1}`}
-                width={600}
-                height={400}
+                width={1920}
+                height={1080}
                 priority
                 className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-auto`}
               />
