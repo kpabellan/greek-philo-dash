@@ -1,8 +1,4 @@
-import dotenv from 'dotenv';
-
 export async function POST(request) {
-  dotenv.config();
-
   const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
   const cloudinaryURL = `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`;
 

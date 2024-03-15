@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
-import dotenv from 'dotenv';
 
-dotenv.config();
-
-export async function GET(request) {
+export async function GET() {
   const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
   const API_KEY = process.env.API_KEY;
   const RANGE = 'Photos!I10:K';
