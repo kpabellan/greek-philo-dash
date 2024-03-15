@@ -6,7 +6,7 @@ dotenv.config();
 export async function GET() {
   const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
   const API_KEY = process.env.API_KEY;
-  const RANGE = 'Photos!I10:K20';
+  const RANGE = 'Photos!I10:K';
 
   const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
 
