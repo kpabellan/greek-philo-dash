@@ -72,15 +72,15 @@ function Photos() {
       </div>
 
       {isLoading ? (
-        <p className="text-center mt-2 text-sm">‎</p>
+        <p className="text-center mt-2 text-xs">‎</p>
       ) : (
         <div className="text-center mt-2">
-          <p className="text-sm"><i>Credit: {imageData[slide]?.credit} &nbsp;&bull;&nbsp; Organization: {imageData[slide]?.organization}</i></p>
+          <p className="text-xs"><i>Credit: {imageData[slide]?.credit} &nbsp;&bull;&nbsp; Organization: {imageData[slide]?.organization}</i></p>
         </div>
       )}
-      <p>
+      <p className="mt-4 text-center">
         Want to submit a photo? &nbsp;
-        <button className="underline" onClick={() => setIsModalOpen(true)}>Click Here</button>
+        <button className="underline font-semibold" onClick={() => setIsModalOpen(true)}>Click Here</button>
       </p>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
