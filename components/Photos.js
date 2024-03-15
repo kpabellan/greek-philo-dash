@@ -63,7 +63,7 @@ function Photos() {
                 width={1920}
                 height={1080}
                 priority
-                className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-auto`}
+                className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-auto shadow-xl`}
               />
             ))}
             <BsArrowRightCircleFill onClick={nextSlide} className="absolute right-1 z-10 cursor-pointer text-3xl drop-shadow-md" />
