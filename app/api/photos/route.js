@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-export async function GET() {
+export async function GET(request) {
   const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
   const API_KEY = process.env.API_KEY;
   const RANGE = 'Photos!I10:K';
