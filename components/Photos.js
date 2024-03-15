@@ -1,7 +1,7 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Modal from "./Modal";
 
@@ -30,20 +30,21 @@ function Photos() {
     fetchImageData();
   }, []);
 
+  const nextSlide = useCallback(() => {
+    setSlide(slide => (slide === imageData.length - 1 ? 0 : slide + 1));
+  }, [imageData.length]);
+
+  const prevSlide = useCallback(() => {
+    setSlide(slide => (slide === 0 ? imageData.length - 1 : slide - 1));
+  }, [imageData.length]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
+
     return () => clearInterval(interval);
-  }, [slide]);
-
-  const nextSlide = () => {
-    setSlide(slide === imageData.length - 1 ? 0 : slide + 1);
-  };
-
-  const prevSlide = () => {
-    setSlide(slide === 0 ? imageData.length - 1 : slide - 1);
-  };
+  }, [nextSlide, slide]);
 
   return (
     <div className="w-3/4 pb-10">
@@ -73,10 +74,10 @@ function Photos() {
       {isLoading ? (
         <p className="text-center mt-2 text-sm">‎</p>
       ) : (
-          <div className="text-center mt-2">
-            <p className="text-sm"><i>Credit: {imageData[slide]?.credit} &nbsp;&bull;&nbsp; Organization: {imageData[slide]?.organization}</i></p>
-          </div>
-        )}
+        <div className="text-center mt-2">
+          <p className="text-sm"><i>Credit: {imageData[slide]?.credit} &nbsp;&bull;&nbsp; Organization: {imageData[slide]?.organization}</i></p>
+        </div>
+      )}
       <p>
         Want to submit a photo? &nbsp;
         <button className="underline" onClick={() => setIsModalOpen(true)}>Click Here</button>
