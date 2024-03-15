@@ -15,16 +15,13 @@ function Photos() {
     const fetchImageData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch('/api/photos');
-        if (!res.ok) {
-          const errorBody = await res.json().catch(() => ({ error: 'Failed to fetch image data' }));
-          throw new Error(errorBody.error || 'Network response was not ok');
-        }
+        const res = await fetch(`/api/photos`);
+        if (!res.ok) throw new Error('Network response was not ok');
         const data = await res.json();
         setImageData(data.imageData);
         setSlide(0);
       } catch (error) {
-        console.error('Failed to fetch image data:', error.message);
+        console.error('Failed to fetch image data:', error);
       } finally {
         setIsLoading(false);
       }
