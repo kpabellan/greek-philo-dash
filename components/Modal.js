@@ -87,7 +87,7 @@ function Modal({ isOpen, onClose }) {
             onClose();
             resetStates();
           }, 2000);
-          showToast('Photo submitted successfully', 'success');
+          showToast('Image submitted successfully', 'success');
         } else {
           throw new Error('The response does not contain a URL');
         }
@@ -98,7 +98,7 @@ function Modal({ isOpen, onClose }) {
         setTimeout(() => {
           resetStates();
         }, 3000);
-        showToast('Error submitting photo', 'error');
+        showToast('Error submitting image', 'error');
       })
       .finally(() => {
         setLoading(false);
@@ -110,7 +110,7 @@ function Modal({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 drop-shadow-md">
       <div className="bg-scblue p-5 rounded-lg overflow-hidden w-10/12 md:w-1/4 z-15">
-        <h2 className="text-xl mb-4">Submit a Photo</h2>
+        <h2 className="text-xl mb-4">Submit an image</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <div>

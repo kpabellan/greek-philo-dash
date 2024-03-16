@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import Leaderboard from "../components/Leaderboard";
 import Activities from "../components/Activities";
-import Photos from "../components/Photos";
+import Images from "../components/Images";
 
 export default function Home() {
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center pt-10">
       <Leaderboard />
-      <Photos />
+      <Images />
       <Activities />
     </main>
   );

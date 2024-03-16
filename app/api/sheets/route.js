@@ -2,7 +2,7 @@ import { google } from 'googleapis';
 
 export async function POST(request) {
   const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
-  const RANGE = 'Photos!A:D';
+  const RANGE = 'Images!A:D';
 
   try {
     const imageData = await request.json();

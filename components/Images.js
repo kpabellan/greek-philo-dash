@@ -5,7 +5,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Modal from "./Modal";
 
-function Photos() {
+function Images() {
   const [imageData, setImageData] = useState([]);
   const [slide, setSlide] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,7 +15,7 @@ function Photos() {
     const fetchImageData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch(`/api/photos`);
+        const res = await fetch(`/api/images`);
         if (!res.ok) throw new Error('Network response was not ok');
         const data = await res.json();
         setImageData(data.imageData);
@@ -48,7 +48,7 @@ function Photos() {
 
   return (
     <div className="w-3/4 pb-10">
-      <h2 className="text-2xl">FEATURED PHOTOS</h2>
+      <h2 className="text-2xl">FEATURED IMAGES</h2>
       <div className="flex justify-center items-center relative mt-4 noSelect">
         {isLoading ? (
           <div className="animate-pulse rounded-xl bg-white w-full h-full" style={{ paddingTop: '66.66%' }}></div>
@@ -59,7 +59,7 @@ function Photos() {
               <Image
                 src={item.src}
                 key={idx}
-                alt={`Photo ${idx + 1}`}
+                alt={`Image ${idx + 1}`}
                 width={1920}
                 height={1080}
                 priority
@@ -79,7 +79,7 @@ function Photos() {
         </div>
       )}
       <p className="mt-4 text-center">
-        Want to submit a photo? &nbsp;
+        Want to submit an image? &nbsp;
         <button className="underline font-semibold" onClick={() => setIsModalOpen(true)}>Click Here</button>
       </p>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
@@ -87,4 +87,4 @@ function Photos() {
   );
 };
 
-export default Photos;
+export default Images;
