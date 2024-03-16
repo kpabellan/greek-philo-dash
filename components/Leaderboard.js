@@ -9,7 +9,6 @@ import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 const types = [
   { organizationType: 'All' },
   { organizationType: 'Social' },
-  { organizationType: 'Multicultural' },
   { organizationType: 'Professional' },
 ];
 
