@@ -59,7 +59,7 @@ function Images() {
   }, [nextSlide, slide]);
 
   return (
-    <div className="w-3/4 pb-10">
+    <div className="w-10/12 pb-10">
       <h2 className="text-2xl">FEATURED IMAGES</h2>
       <div className="flex justify-center items-center relative mt-4 noSelect">
         {isLoading ? (

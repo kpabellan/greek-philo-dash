@@ -107,7 +107,7 @@ function Leaderboard() {
   );
 
   return (
-    <div className="w-3/4 pb-10">
+    <div className="w-10/12 pb-10">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl flex-grow">LEADERBOARD</h2>
 
