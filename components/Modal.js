@@ -111,6 +111,9 @@ function Modal({ isOpen, onClose }) {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 drop-shadow-md">
       <div className="bg-scblue p-5 rounded-lg overflow-hidden w-10/12 md:w-1/4 z-15">
         <h2 className="text-xl mb-4">Submit an image</h2>
+        <div className="text-xs flex flex-col mb-4">
+          <p>Submit a landscape-oriented image for a chance to be featured and earn 20,000 points for your organization.</p>
+        </div>
         <form onSubmit={handleSubmit}>
           <div>
             <div>
