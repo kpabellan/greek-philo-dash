@@ -10,12 +10,13 @@ export async function POST(request) {
     const uniqueIdentifier = Date.now();
 
     const fileName = `${name}-${organization}-${uniqueIdentifier}`;
+    const folder = 'sigma-chi-derby-days-2024';
 
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', uploadPreset);
     formData.append('public_id', fileName);
-    formData.append('folder', 'sigma-chi-derby-days-2024');
+    formData.append('folder', folder);
 
     const response = await fetch(cloudinaryURL, {
       method: 'POST',
