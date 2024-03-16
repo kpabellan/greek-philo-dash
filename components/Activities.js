@@ -62,7 +62,7 @@ function Activities() {
     </div>
   `;
 
-    const htmlWednsday = `
+  const htmlWednsday = `
       <div class="bg-scblue text-center p-6 max-w-2xl mx-auto">
         <h1 class="text-scyellow text-3xl font-bold ">Splash a Sig</h1>
         <p class="text-xl my-2">12pm - 3pm</p>
@@ -86,7 +86,7 @@ function Activities() {
       </div>
     `;
 
-    const htmlThursday = `
+  const htmlThursday = `
       <div class="bg-scblue text-center p-6 max-w-2xl mx-auto">
         <h1 class="text-scyellow text-3xl font-bold ">Decoration Derby</h1>
         <p class="text-xl my-2">12pm - 3pm</p>
@@ -109,7 +109,7 @@ function Activities() {
       </div>
     `;
 
-    const htmlFriday = `
+  const htmlFriday = `
       <div class="bg-scblue text-center p-6 max-w-2xl mx-auto">
         <h1 class="text-scyellow text-3xl font-bold ">Shave a Sig</h1>
         <p class="text-xl my-2">9pm - 10pm</p>
@@ -160,7 +160,7 @@ function Activities() {
       </div>
     `;
 
-    const htmlSaturday = `
+  const htmlSaturday = `
       <div class="bg-scblue text-center p-6 max-w-2xl mx-auto">
         <h1 class="text-scyellow text-3xl font-bold ">Black and White</h1>
         <p class="text-xl my-2">6pm - 8pm</p>
@@ -206,8 +206,6 @@ function Activities() {
       Day: "Saturday",
       MoreInfo: htmlSaturday,
     },
-
-  ];
   ], []);
 
   useEffect(() => {
@@ -290,7 +288,7 @@ function Activities() {
               </div>
               <div>
                 {expandedActivityIndex ===
-                index ? (
+                  index ? (
                   <IoIosArrowDropup className="mx-auto mt-2 text-2xl" />
                 ) : (
                   <IoIosArrowDropdown className="mx-auto mt-2 text-2xl" />
