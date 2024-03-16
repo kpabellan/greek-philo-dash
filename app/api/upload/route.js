@@ -15,6 +15,7 @@ export async function POST(request) {
     formData.append('file', file);
     formData.append('upload_preset', uploadPreset);
     formData.append('public_id', fileName);
+    formData.append('folder', 'sigma-chi-derby-days-2024');
 
     const response = await fetch(cloudinaryURL, {
       method: 'POST',
