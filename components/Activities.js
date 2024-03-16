@@ -232,7 +232,7 @@ function Activities() {
   };
 
   return (
-    <div className="w-3/4 pb-10">
+    <div className="w-10/12 pb-10">
       <h2 className="text-2xl">EVENTS</h2>
       {isLoading ? (
         <div className="mt-4 grid grid-cols-1 gap-4">
