@@ -5,6 +5,18 @@ import React, { useEffect, useState, useCallback } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Modal from "./Modal";
 
+function toGreekLetters(organization) {
+  const greekMap = {
+    Alpha: 'A', Beta: 'B', Gamma: 'Γ', Delta: 'Δ', Epsilon: 'E',
+    Zeta: 'Z', Eta: 'H', Theta: 'Θ', Iota: 'I', Kappa: 'K',
+    Lambda: 'Λ', Mu: 'M', Nu: 'N', Xi: 'Ξ', Omicron: 'O',
+    Pi: 'Π', Rho: 'P', Sigma: 'Σ', Tau: 'T', Upsilon: 'Y',
+    Phi: 'Φ', Chi: 'X', Psi: 'Ψ', Omega: 'Ω'
+  };
+
+  return organization.split(/\s+/).map(word => greekMap[word] || '').join('');
+}
+
 function Images() {
   const [imageData, setImageData] = useState([]);
   const [slide, setSlide] = useState(0);
@@ -75,7 +87,7 @@ function Images() {
         <p className="text-center mt-2 text-xs">‎</p>
       ) : (
         <div className="text-center mt-2">
-          <p className="text-xs"><i>Credit: {imageData[slide]?.credit} &nbsp;&bull;&nbsp; Organization: {imageData[slide]?.organization}</i></p>
+          <p className="text-xs"><i>Credit: {imageData[slide]?.credit} &nbsp;&bull;&nbsp; Organization: {toGreekLetters(imageData[slide]?.organization)}</i></p>
         </div>
       )}
       <p className="mt-4 text-center">
