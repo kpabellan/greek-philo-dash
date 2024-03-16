@@ -24,7 +24,7 @@ export async function POST(request) {
     const result = await response.json();
 
     if (result.secure_url) {
-      return new Response(JSON.stringify({ message: 'Upload successful', url: result.secure_url }), {
+      return new Response(JSON.stringify({ message: 'Upload successful', url: result.secure_url, name: name, organization: organization, uniqueIdentifier: uniqueIdentifier }), {
         status: 200,
         headers: {
           'Content-Type': 'application/json',

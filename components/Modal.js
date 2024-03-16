@@ -2,6 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineLoading3Quarters, AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import { useToast } from '../context/Toast';
 
+async function imageDataToSheets(body) {
+  try {
+    const response = await fetch('/api/sheets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Request failed with status: ${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Error while sending data to sheets:', error);
+  }
+}
+
 function Modal({ isOpen, onClose }) {
   const { showToast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -57,7 +75,13 @@ function Modal({ isOpen, onClose }) {
       })
       .then(data => {
         if (data.url) {
-          console.log('Upload successful');
+          imageDataToSheets({
+            cloudinaryResult: data.url,
+            name: nameField.value,
+            organization: organizationField.value,
+            uniqueIdentifier: data.uniqueIdentifier,
+          });
+
           setSuccess(true);
           setTimeout(() => {
             onClose();
