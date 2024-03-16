@@ -5,7 +5,6 @@ import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 
 function Activities() {
   const [expandedActivityIndex, setExpandedActivityIndex] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   const activities = useMemo(() => [
     {
@@ -46,7 +45,6 @@ function Activities() {
     if (currentDayActivityIndex !== -1) {
       setExpandedActivityIndex(currentDayActivityIndex);
     }
-    setIsLoading(false);
   }, [activities]);
 
   // Toggle visibility of activity details
@@ -57,26 +55,6 @@ function Activities() {
   return (
     <div className="w-10/12 pb-10">
       <h2 className="text-2xl">EVENTS</h2>
-      {isLoading ? (
-        <div className="mt-4 grid grid-cols-1 gap-4">
-          {activities.map((activity, index) => (
-            <div
-              key={index}
-              onClick={() => toggleActivity(index)}
-              className="cursor-pointer rounded-lg border-2 border-white bg-gray-100 p-4 text-center shadow-md transition-all duration-300 ease-in-out"
-            >
-              <h3 className="text-xl font-semibold">{activity.Day}</h3>
-              <p className="text-lg font-semibold">{activity.Activity}</p>
-              <div className={`transition-max-height overflow-hidden duration-500 ease-in-out ${expandedActivityIndex === index ? 'max-h-screen' : 'max-h-0'}`}>
-                <p className="mt-2 text-sm">{activity.MoreInfo}</p>
-              </div>
-              <div>
-                <IoIosArrowDropdown className="text-2xl mt-2 mx-auto" />
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
         <div className="mt-4 grid grid-cols-1 gap-4">
           {activities.map((activity, index) => (
             <div
@@ -95,7 +73,6 @@ function Activities() {
             </div>
           ))}
         </div>
-      )}
     </div>
   );
 }
