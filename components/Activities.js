@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
+import { motion } from 'framer-motion';
 
 function Activities() {
   const [expandedActivityIndex, setExpandedActivityIndex] = useState(null);
@@ -52,27 +53,46 @@ function Activities() {
     setExpandedActivityIndex(prevIndex => prevIndex === index ? null : index);
   };
 
+  const fadeIn = (index) => ({
+    hidden: { opacity: 0, y: -10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5 + index * 0.05,
+        ease: "easeOut",
+        delay: index * 0.1,
+      },
+    },
+  });
+
   return (
     <div className="w-10/12 pb-10">
       <h2 className="text-2xl">EVENTS</h2>
-        <div className="mt-4 grid grid-cols-1 gap-4">
-          {activities.map((activity, index) => (
-            <div
+      <div className="mt-4 grid grid-cols-1 gap-4">
+        {activities.map((activity, index) => {
+          return (
+            <motion.div
+              className="cursor-pointer rounded-lg border-2 border-white bg-gray-100 p-4 text-center shadow-md"
               key={index}
               onClick={() => toggleActivity(index)}
-              className="cursor-pointer rounded-lg border-2 border-white bg-gray-100 p-4 text-center shadow-md transition-all duration-300 ease-in-out"
+              variants={fadeIn(index)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
             >
               <h3 className="text-xl font-semibold">{activity.Day}</h3>
               <p className="text-lg font-semibold">{activity.Activity}</p>
-              <div className={`transition-max-height overflow-hidden duration-500 ease-in-out ${expandedActivityIndex === index ? 'max-h-screen' : 'max-h-0'}`}>
+              <div className={`transition-max-height overflow-hidden duration-300 ease-in-out ${expandedActivityIndex === index ? 'max-h-screen' : 'max-h-0'}`}>
                 <p className="mt-2 text-sm">{activity.MoreInfo}</p>
               </div>
               <div>
                 {expandedActivityIndex === index ? <IoIosArrowDropup className="text-2xl mt-2 mx-auto" /> : <IoIosArrowDropdown className="text-2xl mt-2 mx-auto" />}
               </div>
-            </div>
-          ))}
-        </div>
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
   );
 }
