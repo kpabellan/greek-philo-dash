@@ -180,7 +180,8 @@ function Activities() {
       </div>
     `;
 
-  const activities = [
+
+  const activities = useMemo(() => [
     {
       Day: "Monday",
       MoreInfo: htmlMonday,
@@ -205,7 +206,9 @@ function Activities() {
       Day: "Saturday",
       MoreInfo: htmlSaturday,
     },
+
   ];
+  ], []);
 
   useEffect(() => {
     const currentDay = new Date().toLocaleString(
@@ -221,8 +224,7 @@ function Activities() {
         currentDayActivityIndex,
       );
     }
-    setIsLoading(false);
-  }, []); // Dependency array empty to run only on mount
+  }, [activities]);
 
   // Toggle visibility of activity details
   const toggleActivity = (index) => {
@@ -232,7 +234,7 @@ function Activities() {
   };
 
   return (
-    <div className="w-3/4 pb-10">
+    <div className="w-10/12 pb-10">
       <h2 className="text-2xl">EVENTS</h2>
       {isLoading ? (
         <div className="mt-4 grid grid-cols-1 gap-4">
@@ -297,7 +299,6 @@ function Activities() {
             </div>
           ))}
         </div>
-      )}
     </div>
   );
 }

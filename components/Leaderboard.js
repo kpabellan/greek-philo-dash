@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Listbox } from '@headlessui/react';
@@ -8,7 +9,6 @@ import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 const types = [
   { organizationType: 'All' },
   { organizationType: 'Social' },
-  { organizationType: 'Multicultural' },
   { organizationType: 'Professional' },
 ];
 
@@ -84,7 +84,7 @@ function Leaderboard() {
       <div className="flex items-center">
         <h3 className="text-3xl text-black">#{index + 1}</h3>
         <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
-          <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
+          <Image src={`/images/logos/${leader.organization.toLowerCase().replace(/\s+/g, '')}.png`} alt={leader.organization} width={100} height={100} className="w-full h-full rounded-full ring ring-white" />
         </div>
         <h3 className="text-3xl pl-2 text-black text-left">{leader.organization}</h3>
       </div>
@@ -97,7 +97,7 @@ function Leaderboard() {
       <div className="flex items-center">
         <h3 className="text-xl text-black">#{index + 1}</h3>
         <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
-          <img src={`/images/logos/${leader.organization}.png`} alt={leader.organization} className="w-full h-full rounded-full ring ring-white" />
+          <Image src={`/images/logos/${leader.organization.toLowerCase().replace(/\s+/g, '')}.png`} alt={leader.organization} width={100} height={100} className="w-full h-full rounded-full ring ring-white" />
         </div>
       </div>
       <div className="flex-1 flex justify-center">
@@ -107,7 +107,7 @@ function Leaderboard() {
   );
 
   return (
-    <div className="w-3/4 pb-10">
+    <div className="w-10/12 pb-10">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl flex-grow">LEADERBOARD</h2>
 

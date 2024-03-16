@@ -1,7 +1,4 @@
 import { NextResponse } from "next/server";
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 export async function GET(request) {
   const url = new URL(request.url);
