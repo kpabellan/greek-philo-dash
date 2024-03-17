@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 import { motion } from 'framer-motion';
 
-function Activities() {
+function Events() {
   const [
     expandedActivityIndex,
     setExpandedActivityIndex,
@@ -277,4 +277,4 @@ function Activities() {
   );
 }
 
-export default Activities;
+export default Events;

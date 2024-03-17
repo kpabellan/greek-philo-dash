@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Leaderboard from "../components/Leaderboard";
-import Activities from "../components/Activities";
+import Events from "../components/Events";
 import Images from "../components/Images";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center pt-10">
       <Leaderboard />
       <Images />
-      <Activities />
+      <Events />
     </main>
   );
 }
