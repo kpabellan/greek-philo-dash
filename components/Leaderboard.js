@@ -74,10 +74,20 @@ function Leaderboard() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const itemVariantSlideUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
+  const itemVariantSlideUp = (index) => ({
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+        mass: 0.5,
+        delay: index * 0.1,
+      },
+    },
+  });
 
   const DesktopLayout = ({ leader, index }) => (
     <>
@@ -152,10 +162,10 @@ function Leaderboard() {
               <motion.div
                 key={index}
                 className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
-                variants={itemVariantFadeIn}
+                variants={itemVariantSlideUp(index)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.1 }}
               >
                 {isDesktop ? <DesktopLayout leader={leader} index={index} /> : <MobileLayout leader={leader} index={index} />}
               </motion.div>
@@ -165,10 +175,10 @@ function Leaderboard() {
               <motion.div
                 key={`additional-${index}`}
                 className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
-                variants={itemVariantSlideUp}
+                variants={itemVariantSlideUp(index)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
+                viewport={{ once: true, amount: 0.1 }}
               >
                 {isDesktop ? <DesktopLayout leader={leader} index={index + initialLeaders.length} /> : <MobileLayout leader={leader} index={index + initialLeaders.length} />}
               </motion.div>

@@ -1,13 +1,8 @@
 "use client";
 
-import React, {
-  useState,
-  useEffect,
-} from "react";
-import {
-  IoIosArrowDropdown,
-  IoIosArrowDropup,
-} from "react-icons/io";
+import React, { useState, useEffect, useMemo } from 'react';
+import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
+import { motion } from 'framer-motion';
 
 function Activities() {
   const [
@@ -62,7 +57,7 @@ function Activities() {
     </div>
   `;
 
-    const htmlWednsday = `
+  const htmlWednsday = `
       <div class="bg-scblue text-center p-6 max-w-2xl mx-auto">
         <h1 class="text-scyellow text-3xl font-bold ">Splash a Sig</h1>
         <p class="text-xl my-2">12pm - 3pm</p>
@@ -86,7 +81,7 @@ function Activities() {
       </div>
     `;
 
-    const htmlThursday = `
+  const htmlThursday = `
       <div class="bg-scblue text-center p-6 max-w-2xl mx-auto">
         <h1 class="text-scyellow text-3xl font-bold ">Decoration Derby</h1>
         <p class="text-xl my-2">12pm - 3pm</p>
@@ -109,7 +104,7 @@ function Activities() {
       </div>
     `;
 
-    const htmlFriday = `
+  const htmlFriday = `
       <div class="bg-scblue text-center p-6 max-w-2xl mx-auto">
         <h1 class="text-scyellow text-3xl font-bold ">Shave a Sig</h1>
         <p class="text-xl my-2">9pm - 10pm</p>
@@ -160,7 +155,7 @@ function Activities() {
       </div>
     `;
 
-    const htmlSaturday = `
+  const htmlSaturday = `
       <div class="bg-scblue text-center p-6 max-w-2xl mx-auto">
         <h1 class="text-scyellow text-3xl font-bold ">Black and White</h1>
         <p class="text-xl my-2">6pm - 8pm</p>
@@ -231,73 +226,56 @@ function Activities() {
     );
   };
 
+  const fadeIn = (index) => ({
+    hidden: { opacity: 0, y: -10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5 + index * 0.05,
+        ease: "easeOut",
+        delay: index * 0.1,
+      },
+    },
+  });
+
   return (
     <div className="w-10/12 pb-10">
       <h2 className="text-2xl">EVENTS</h2>
-      {isLoading ? (
-        <div className="mt-4 grid grid-cols-1 gap-4">
-          {activities.map((activity, index) => (
-            <div
+      <div className="mt-4 grid grid-cols-1 gap-4">
+        {activities.map((activity, index) => {
+          return (
+            <motion.div
+              className="cursor-pointer rounded-lg border-2 border-white bg-gray-100 p-4 text-center shadow-md"
               key={index}
-              onClick={() =>
-                toggleActivity(index)
-              }
-              className="cursor-pointer rounded-lg border-2 border-white bg-gray-100 p-4 text-center shadow-md transition-all duration-300 ease-in-out"
+              onClick={() => toggleActivity(index)}
+              variants={fadeIn(index)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
             >
-              <h3 className="text-3xl font-semibold">
-                {activity.Day}
-              </h3>
-              <div
-                className={`transition-max-height overflow-hidden duration-500 ease-in-out ${expandedActivityIndex === index ? "max-h-screen" : "max-h-0"}`}
-              >
+              <h3 className="text-xl font-semibold">{activity.Day}</h3>
+              <div className={`transition-max-height overflow-hidden duration-300 ease-in-out ${expandedActivityIndex === index ? 'max-h-screen' : 'max-h-0'}`}>
                 <div
                   className="mt-2 text-sm"
                   dangerouslySetInnerHTML={{
                     __html: activity.MoreInfo,
                   }}
-                ></div>
-              </div>
-              <div>
-                <IoIosArrowDropdown className="mx-auto mt-2 text-2xl" />
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="mt-4 grid grid-cols-1 gap-4">
-          {activities.map((activity, index) => (
-            <div
-              key={index}
-              onClick={() =>
-                toggleActivity(index)
-              }
-              className="cursor-pointer rounded-lg border-2 border-white bg-gray-100 p-4 text-center shadow-md transition-all duration-300 ease-in-out"
-            >
-              <h3 className="text-3xl font-semibold">
-                {activity.Day}
-              </h3>
-              <div
-                className={`transition-max-height overflow-hidden duration-500 ease-in-out ${expandedActivityIndex === index ? "max-h-screen" : "max-h-0"}`}
-              >
-                <div
-                  className="mt-2 text-sm"
-                  dangerouslySetInnerHTML={{
-                    __html: activity.MoreInfo,
-                  }}
-                ></div>
+                >
+                </div>
               </div>
               <div>
                 {expandedActivityIndex ===
-                index ? (
+                  index ? (
                   <IoIosArrowDropup className="mx-auto mt-2 text-2xl" />
                 ) : (
                   <IoIosArrowDropdown className="mx-auto mt-2 text-2xl" />
                 )}
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
   );
 }
