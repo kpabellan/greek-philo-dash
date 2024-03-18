@@ -34,17 +34,17 @@ function Events() {
     <div class="bg-scblue text-center max-w-2xl mx-auto">
       <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
       <div class="text-center text-sm md:text-lg">
-        <p class = "mb-3">Come to Scholars Lane to wax a brother of Sigma Chi to support the Huntman Cancer Foundation.</p>
+        <p class = "mb-3">Come to Scholars Lane to wax a brother of Sigma Chi to support the Huntsman Cancer Foundation.</p>
         <p></p>
         <p class="text-scyellow text-lg font-bold mb-3">$5 for two Wax Strips and 5,000 Points</p>
-        <p class="text-scyellow text-lg font-bold">6,500 Points with Derby Hoarse</p>
+        <p class="text-scyellow text-lg font-bold">6,500 Points with Derby Horse</p>
       </div>
 
       <div class="text-center text-lg mt-5">
         <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Bingo Stories</h1>
         <p class="my-2 text-lg md:text-xl">3pm - 9pm</p>
         <p class="mb-3 text-sm md:text-lg">
-          Make a donation dedicated to a brother who has a bingo card up on thier instagram or snapchat story. When you make the donation specify the squares you would like to be filled out.
+          Make a donation dedicated to a brother who has a bingo card up on their Instagram or Snapchat story. When you make the donation specify the squares you would like to be filled out.
         </p>
         <p class="text-scyellow text-lg font-bold mb-3">1,000 points per dollar donated</p>
         <p class="text-scyellow text-lg font-bold">10,000 points for making a bingo</p>
@@ -52,119 +52,115 @@ function Events() {
     </div>
   `;
 
-  const htmlWednsday = `
-      <div class="bg-scblue text-center max-w-2xl mx-auto">
-        <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
+  const htmlWednesday = `
+    <div class="bg-scblue text-center max-w-2xl mx-auto">
+      <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
 
-        <div class="text-center text-sm md:text-lg">
-          <p class="mb-3">Come to Scholars Lane to splash a brother of Sigma Chi with an ice cold water ballon.</p>
-          <p></p>
-          <p class="text-scyellow text-lg font-bold mb-3">$5 for two Water Balloons and 5,000 Points</p>
-          <p class="text-scyellow text-lg font-bold">6,500 Points with Derby Hoarse</p>
-        </div>
-
-        <div class="text-center text-lg mt-5">
-          <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Spot a Brother</h1>
-          <p class="my-2 text-lg md:text-xl">8am - 11am & 4pm - 7pm</p>
-          <p class="mb-3 text-sm md:text-lg">
-           If you find a brother on campus take a picture with him and send it to your coach to get points for your organization!
-          </p>
-          <p class="text-scyellow text-lg font-bold mb-3">5,000 points per picture</p>
-          <p class="text-scyellow text-lg font-bold">6,500 points if you have your derby hoarse in frame</p>
-        </div>
+      <div class="text-center text-sm md:text-lg">
+        <p class="mb-3">Come to Scholars Lane to splash a brother of Sigma Chi with an ice cold water balloon.</p>
+        <p></p>
+        <p class="text-scyellow text-lg font-bold mb-3">$5 for two Water Balloons and 5,000 Points</p>
+        <p class="text-scyellow text-lg font-bold">6,500 Points with Derby Horse</p>
       </div>
-    `;
+
+      <div class="text-center text-lg mt-5">
+        <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Spot a Brother</h1>
+        <p class="my-2 text-lg md:text-xl">8am - 11am & 4pm - 7pm</p>
+        <p class="mb-3 text-sm md:text-lg">
+          If you find a brother on campus take a picture with him and send it to your coach to get points for your organization!
+        </p>
+        <p class="text-scyellow text-lg font-bold mb-3">5,000 points per picture</p>
+        <p class="text-scyellow text-lg font-bold">6,500 points if you have your derby horse in frame</p>
+      </div>
+    </div>
+  `;
 
   const htmlThursday = `
-      <div class="bg-scblue text-center max-w-2xl mx-auto">
-        <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
+    <div class="bg-scblue text-center max-w-2xl mx-auto">
+      <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
 
-        <div class="text-center text-sm md:text-lg">
-          <p class="mb-3">Come to Scholars Lane to decorate a derby hat. Submit your best hat of your orginization to win points! </p>
-          <p></p>
-          <p class="text-scyellow text-lg font-bold mb-3">1st hat FREE and $5 per subsequent hat</p>
-          <p class="text-scyellow text-lg font-bold">5,000 points per decorated hat</p>
-        </div>
-
-        <div class="text-center text-lg mt-5">
-          <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Emtea & Asip</h1>
-          <p class="my-2 text-lg md:text-xl">12am - 11pm</p>
-          <p class="mb-3 text-sm md:text-lg">
-            Go to the <a href="https://www.google.com/maps/place/Em-Tea/@37.3313887,-120.469259,17z/data=!3m1!4b1!4m6!3m5!1s0x809143c6378118dd:0x30aed305f7cd855c!8m2!3d37.3313887!4d-120.4666841!16s%2Fg%2F11bv_dg428?entry=ttu" target="_blank" rel="noopener noreferrer" class="font-bold underline">Emtea & Asip</a> to support Huntsmen. Send your receipt to your coach to get your points.
-          </p>
-          <p class="text-scyellow text-lg font-bold">500 points per dollar spent</p>
-        </div>
+      <div class="text-center text-sm md:text-lg">
+        <p class="mb-3">Come to Scholars Lane to decorate a derby hat. Submit your best hat of your organization to win points! </p>
+        <p></p>
+        <p class="text-scyellow text-lg font-bold mb-3">1st hat FREE and $5 per subsequent hat</p>
+        <p class="text-scyellow text-lg font-bold">5,000 points per decorated hat</p>
       </div>
-    `;
+
+      <div class="text-center text-lg mt-5">
+        <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Emtea & Asip</h1>
+        <p class="my-2 text-lg md:text-xl">12am - 11pm</p>
+        <p class="mb-3 text-sm md:text-lg">
+          Go to the <a href="https://www.google.com/maps/place/Em-Tea/@37.3313887,-120.469259,17z/data=!3m1!4b1!4m6!3m5!1s0x809143c6378118dd:0x30aed305f7cd855c!8m2!3d37.3313887!4d-120.4666841!16s%2Fg%2F11bv_dg428?entry=ttu" target="_blank" rel="noopener noreferrer" class="font-bold underline">Emtea & Asip</a> to support Huntsmen. Send your receipt to your coach to get your points.
+        </p>
+        <p class="text-scyellow text-lg font-bold">500 points per dollar spent</p>
+      </div>
+    </div>
+  `;
 
   const htmlFriday = `
-      <div class="bg-scblue text-center max-w-2xl mx-auto">
-        <p class="my-2 text-lg md:text-xl">9pm - 10pm</p>
+    <div class="bg-scblue text-center max-w-2xl mx-auto">
+      <p class="my-2 text-lg md:text-xl">9pm - 10pm</p>
 
-        <div class="text-center text-sm md:text-lg">
-          <p class="mb-3"> Come to ACS 120 for the Derby Days Finale. Participating orginizations bid on volantering brothers to have thier head shaved. The points go to the highest bidder! </p>
-          <p class="text-scyellow text-lg font-bold mb-3"> 1,000 points for every dollar bid going to the winning bid </p>
-        </div>
+      <div class="text-center text-sm md:text-lg">
+        <p class="mb-3"> Come to ACS 120 for the Derby Days Finale. Participating organizations bid on volunteering brothers to have their head shaved. The points go to the highest bidder! </p>
+        <p class="text-scyellow text-lg font-bold mb-3"> 1,000 points for every dollar bid going to the winning bid </p>
+      </div>
 
-        <div class="text-center text-lg mt-5">
-          <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Competitions</h1>
-          <p class="mb-3 text-sm md:text-lg">Each of the competitions are among each participating organization's category (Social, Professional, or Multicultural).</p>
-          
-          <!-- Wrapper div for centering the list -->
-          <div class="flex justify-center">
-            <!-- List items container with left alignment -->
-            <div class="flex flex-col items-start">
-              
-              <!-- Individual list item -->
-              <div class="flex items-center text-sm md:text-lg">
-                <svg class="h-2 w-2 text-white mr-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
-                <div>Best Decorated Hat:</div>
-                <div class="text-scyellow font-bold ml-1">100,000 points</div>
-              </div>
-              
-              <!-- Repeat for other items... -->
-              <div class="flex items-center text-sm md:text-lg">
-                <svg class="h-2 w-2 text-white mr-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
-                <div>Most Shirts Bought:</div>
-                <div class="text-scyellow font-bold ml-1">100,000 points</div>
-              </div>
-              
-              <div class="flex items-center text-sm md:text-lg">
-                <svg class="h-2 w-2 text-white mr-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
-                <div>Most Donations:</div>
-                <div class="text-scyellow font-bold ml-1">100,000 points</div>
-              </div>
-
-              <div class="flex items-center text-sm md:text-lg">
-                <svg class="h-2 w-2 text-white mr-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
-                <div>Most Horses Bought:</div>
-                <div class="text-scyellow font-bold ml-1">100,000 points</div>
-              </div>
-
+      <div class="text-center text-lg mt-5">
+        <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Competitions</h1>
+        <p class="mb-3 text-sm md:text-lg">Each of the competitions are among each participating organization's category (Social, Professional, or Multicultural).</p>
+        
+        <div class="flex justify-center">
+          <div class="flex flex-col items-start">
+            
+            <div class="flex items-center text-sm md:text-lg">
+              <svg class="h-2 w-2 text-white mr-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+              <div>Best Decorated Hat:</div>
+              <div class="text-scyellow font-bold ml-1">100,000 points</div>
             </div>
+            
+            <div class="flex items-center text-sm md:text-lg">
+              <svg class="h-2 w-2 text-white mr-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+              <div>Most Shirts Bought:</div>
+              <div class="text-scyellow font-bold ml-1">100,000 points</div>
+            </div>
+            
+            <div class="flex items-center text-sm md:text-lg">
+              <svg class="h-2 w-2 text-white mr-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+              <div>Most Donations:</div>
+              <div class="text-scyellow font-bold ml-1">100,000 points</div>
+            </div>
+
+            <div class="flex items-center text-sm md:text-lg">
+              <svg class="h-2 w-2 text-white mr-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>
+              <div>Most Horses Bought:</div>
+              <div class="text-scyellow font-bold ml-1">100,000 points</div>
+            </div>
+
           </div>
         </div>
       </div>
-    `;
+    </div>
+  `;
 
   const htmlSaturday = `
-      <div class="bg-scblue text-center max-w-2xl mx-auto">
-        <p class="my-2 text-lg md:text-xl">6pm - 8pm</p>
+    <div class="bg-scblue text-center max-w-2xl mx-auto">
+      <p class="my-2 text-lg md:text-xl">6pm - 8pm</p>
 
-        <div class="text-center text-sm md:text-lg">
-          <p class="mb-3">
-            All are welcome too come to <a href="https://www.google.com/maps/place/Joystiq/@37.3007488,-120.483688,17z/data=!3m1!4b1!4m6!3m5!1s0x809143cdcec0e8f3:0xe0ebbb922160c7ac!8m2!3d37.3007488!4d-120.4811131!16s%2Fg%2F11t7skw_6q?entry=ttu" target="_blank" rel="noopener noreferrer" class="font-bold underline">Joystiq</a> to celebrate all the hard work put in by all participating orginizations for the noble cause of Huntman Cancer Foundation.  
-          </p>
-        </div>
-
-        <div class="text-center text-lg mt-5">
-          <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Derby Darling</h1>
-          <p class="text-sm md:text-lg">
-            There will be one Derby Darling submitted by each participating orginization, and only one Derby Darling will be chosen across all participating orginizations. The Derby Darling is someone who was able to exemplary demonstrate thier commitment to supporting the Huntman Cancer Foundation. As such, the Derby Darling will be decided via an equal wighting of the points earned by thier orginization and vote of the brothers of Sigma Chi.
-          </p>
-        </div>
+      <div class="text-center text-sm md:text-lg">
+        <p class="mb-3">
+          All are welcome to come to <a href="https://www.google.com/maps/place/Joystiq/@37.3007488,-120.483688,17z/data=!3m1!4b1!4m6!3m5!1s0x809143cdcec0e8f3:0xe0ebbb922160c7ac!8m2!3d37.3007488!4d-120.4811131!16s%2Fg%2F11t7skw_6q?entry=ttu" target="_blank" rel="noopener noreferrer" class="font-bold underline">Joystiq</a> to celebrate all the hard work put in by all participating organizations for the noble cause of Huntsman Cancer Foundation.  
+        </p>
       </div>
-    `;
+
+      <div class="text-center text-lg mt-5">
+        <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Derby Darling</h1>
+        <p class="text-sm md:text-lg">
+          There will be one Derby Darling submitted by each participating organization, and only one Derby Darling will be chosen across all participating organizations. The Derby Darling is someone who was able to exemplarily demonstrate their commitment to supporting the Huntsman Cancer Foundation. As such, the Derby Darling will be decided via an equal weighting of the points earned by their organization and vote of the brothers of Sigma Chi.
+        </p>
+      </div>
+    </div>
+  `;
 
   const activities = [
     {
@@ -180,7 +176,7 @@ function Events() {
     {
       Day: "Wednesday",
       Activity: "Splash a Sig",
-      MoreInfo: htmlWednsday,
+      MoreInfo: htmlWednesday,
     },
     {
       Day: "Thursday",
