@@ -111,7 +111,7 @@ function Modal({ isOpen, onClose }) {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 drop-shadow-md">
       <div className="bg-scblue p-5 rounded-lg overflow-hidden w-10/12 md:w-1/4 z-15">
         <h2 className="text-xl mb-4">Submit an image</h2>
-        <div className="text-xs flex flex-col mb-4">
+        <div className="flex flex-col mb-4 text-xs md:text-sm">
           <p>Submit a landscape-oriented image for a chance to be featured and earn 20,000 points for your organization.</p>
         </div>
         <form onSubmit={handleSubmit}>
@@ -123,7 +123,7 @@ function Modal({ isOpen, onClose }) {
 
             <div>
               <label>Name</label>
-              <input type="text" name="name" required className="border rounded p-2 w-full h-12 text-xl  bg-white text-black" />
+              <input type="text" name="name" placeholder="Your Name" required className="border rounded p-2 w-full h-12 text-xl  bg-white text-black" />
             </div>
 
             <div>
