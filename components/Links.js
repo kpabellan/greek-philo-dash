@@ -14,7 +14,9 @@ function Links() {
           />
           <div className="p-5">
             <h3 className="text-white text-lg font-semibold mb-2">Derby Days Shirts</h3>
-            <p className="text-white text-opacity-80 mb-4">Support our event by purchasing official Derby Days shirts. A portion of the proceeds will go towards our charitable cause.</p>
+            <p className="text-white text-opacity-80 mb-4">Support our event by purchasing official Derby Days shirts. Remember to send you coach a recipt of your order.</p>
+            <p class = "text-scyellow font-bold">30,000 points before wednesday</p>
+            <p class = "text-scyellow font-bold mb-4">25,000 points otherwise</p>
             <a href="https://app.greekhouse.org/store/Derby-Days-2024-120910"
               target="_blank"
               rel="noopener noreferrer"
@@ -31,8 +33,9 @@ function Links() {
             style={{ backgroundColor: '#F2E7DC' }}
           />
           <div className="p-5">
-            <h3 className="text-white text-lg font-semibold mb-2">Huntsman Cancer Institute Donation</h3>
-            <p className="text-white text-opacity-80 mb-4">Make a difference today by donating to the Huntsman Cancer Institute. Every contribution helps us get one step closer to our goal.</p>
+            <h3 className="text-white text-lg font-semibold mb-2">Huntsman Cancer Foundation Donation</h3>
+            <p className="text-white text-opacity-80 mb-4">Make a difference today by donating to the Huntsman Cancer Foundation directly. Every contribution helps us get one step closer to our goal.</p>
+            <p class = "text-scyellow font-bold mb-4">2,000 points for every dollar donated</p>
             <a href="https://hope.huntsmancancer.org/gentoend/lambda-delta"
               target="_blank"
               rel="noopener noreferrer"
