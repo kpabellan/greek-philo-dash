@@ -15,7 +15,7 @@ function Events() {
       <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
     
       <div class="text-center text-sm md:text-lg">
-        <p class="mb-3"> Come to Scholars Lane to Grab a Hat and strike up a conversation with a brother. Remember to buy a Derby Horse for <b>$15</b> and <b>10,000</b> points to get more points later in the week .</p>
+        <p class="mb-3"> Come to Scholar's Lane to grab a hat and strike up a conversation with a brother. Remember to buy a Derby Horse for <b>$15</b> and <b>10,000</b> points to get more points later in the week .</p>
         <p class="text-scyellow text-lg font-bold">5,000 points per talk</p>
       </div>
     
@@ -23,7 +23,7 @@ function Events() {
         <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Habit</h1>
         <p class="my-2 text-lg md:text-xl">2pm - 9pm</p>
         <p class="mb-3 text-sm md:text-lg">
-          Go to the <a href="https://www.google.com/maps/place/The+Habit+Burger+Grill/@37.3340604,-120.4733384,17z/data=!3m1!4b1!4m6!3m5!1s0x8091430f14f15761:0xb81718f333cdde86!8m2!3d37.3340605!4d-120.4684675!16s%2Fg%2F11szdc5p30?entry=ttu" target="_blank" rel="noopener noreferrer" class="font-bold underline">Habit</a> to support Huntsmen. Send your receipt to your coach to get your points.
+          Go to the <a href="https://www.google.com/maps/place/The+Habit+Burger+Grill/@37.3340604,-120.4733384,17z/data=!3m1!4b1!4m6!3m5!1s0x8091430f14f15761:0xb81718f333cdde86!8m2!3d37.3340605!4d-120.4684675!16s%2Fg%2F11szdc5p30?entry=ttu" target="_blank" rel="noopener noreferrer" class="font-bold underline">Habit</a> to support Huntsman. Send your receipt to your coach to get your points.
         </p>
         <p class="text-scyellow text-lg font-bold">500 points per dollar spent</p>
       </div>
@@ -34,7 +34,7 @@ function Events() {
     <div class="bg-scblue text-center max-w-2xl mx-auto">
       <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
       <div class="text-center text-sm md:text-lg">
-        <p class = "mb-3">Come to Scholars Lane to wax a brother of Sigma Chi to support the Huntsman Cancer Foundation.</p>
+        <p class = "mb-3">Come to Scholar's Lane to wax a brother of Sigma Chi to support the Huntsman Cancer Foundation.</p>
         <p></p>
         <p class="text-scyellow text-lg font-bold mb-3">$5 for two Wax Strips and 5,000 Points</p>
         <p class="text-scyellow text-lg font-bold">6,500 Points with Derby Horse</p>
@@ -44,7 +44,7 @@ function Events() {
         <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Bingo Stories</h1>
         <p class="my-2 text-lg md:text-xl">3pm - 9pm</p>
         <p class="mb-3 text-sm md:text-lg">
-          Make a donation dedicated to a brother who has a bingo card up on their Instagram or Snapchat story. When you make the donation specify the squares you would like to be filled out.
+          Make a donation dedicated to a brother who has a bingo card up on their Instagram or Snapchat story. When you make the donation, specify the squares you would like to be filled out.
         </p>
         <p class="text-scyellow text-lg font-bold mb-3">1,000 points per dollar donated</p>
         <p class="text-scyellow text-lg font-bold">10,000 points for making a bingo</p>
@@ -57,7 +57,7 @@ function Events() {
       <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
     
       <div class="text-center text-sm md:text-lg">
-        <p class="mb-3">Come to Scholars Lane to splash a brother of Sigma Chi with an ice cold water balloon.</p>
+        <p class="mb-3">Come to Scholar's Lane to splash a brother of Sigma Chi with an ice cold water balloon.</p>
         <p></p>
         <p class="text-scyellow text-lg font-bold mb-3">$5 for two Water Balloons and 5,000 Points</p>
         <p class="text-scyellow text-lg font-bold">6,500 Points with Derby Horse</p>
@@ -67,7 +67,7 @@ function Events() {
         <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Spot a Brother</h1>
         <p class="my-2 text-lg md:text-xl">8am - 11am & 4pm - 7pm</p>
         <p class="mb-3 text-sm md:text-lg">
-          If you find a brother on campus take a picture with him and send it to your coach to get points for your organization!
+          If you find a brother on campus, take a picture with him and send it to your coach to get points for your organization!
         </p>
         <p class="text-scyellow text-lg font-bold mb-3">2,000 points per picture</p>
         <p class="text-scyellow text-lg font-bold">3,000 points if you have your Derby Horse in frame</p>
@@ -80,7 +80,7 @@ function Events() {
       <p class="my-2 text-lg md:text-xl">12pm - 3pm</p>
     
       <div class="text-center text-sm md:text-lg">
-        <p class="mb-3">Come to Scholars Lane to decorate a derby hat. Submit your best hat of your organization to win points! </p>
+        <p class="mb-3">Come to Scholar's Lane to decorate a derby hat. Submit your best hat of your organization to win points! </p>
         <p></p>
         <p class="text-scyellow text-lg font-bold mb-3">1st hat FREE and $5 per subsequent hat</p>
         <p class="text-scyellow text-lg font-bold">5,000 points per decorated hat</p>
@@ -90,7 +90,7 @@ function Events() {
         <h1 class="text-scyellow font-bold text-2xl md:text-3xl">Bonus: Emtea & Asip</h1>
         <p class="my-2 text-lg md:text-xl">12am - 11pm</p>
         <p class="mb-3 text-sm md:text-lg">
-          Go to the <a href="https://www.google.com/maps/place/Em-Tea/@37.3313887,-120.469259,17z/data=!3m1!4b1!4m6!3m5!1s0x809143c6378118dd:0x30aed305f7cd855c!8m2!3d37.3313887!4d-120.4666841!16s%2Fg%2F11bv_dg428?entry=ttu" target="_blank" rel="noopener noreferrer" class="font-bold underline">Emtea & Asip</a> to support Huntsmen. Send your receipt to your coach to get your points.
+          Go to the <a href="https://www.google.com/maps/place/Em-Tea/@37.3313887,-120.469259,17z/data=!3m1!4b1!4m6!3m5!1s0x809143c6378118dd:0x30aed305f7cd855c!8m2!3d37.3313887!4d-120.4666841!16s%2Fg%2F11bv_dg428?entry=ttu" target="_blank" rel="noopener noreferrer" class="font-bold underline">Emtea & Asip</a> to support Huntsman. Send your receipt to your coach to get your points.
         </p>
         <p class="text-scyellow text-lg font-bold">500 points per dollar spent</p>
       </div>
