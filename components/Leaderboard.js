@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Listbox } from '@headlessui/react';
@@ -37,7 +36,6 @@ function toGreekLetters(organization) {
 function Leaderboard() {
   const [leaders, setLeaders] = useState([]);
   const [selectedOrganizationType, setSelectedOrganizationType] = useState(types[0]);
-  const [showAll, setShowAll] = useState(false); // State to toggle visibility
   const [isLoading, setIsLoading] = useState(true); // State to track loading status
   const [windowWidth, setWindowWidth] = useState(undefined); // State to track window width
 
@@ -66,10 +64,8 @@ function Leaderboard() {
         } else {
           setLeaders([]);
         }
-        setShowAll(false);
         setIsLoading(false);
       } catch (err) {
-        setShowAll(false);
         setIsLoading(false);
       }
     };
@@ -77,8 +73,6 @@ function Leaderboard() {
     fetchLeaderboard();
   }, [selectedOrganizationType]);
 
-  const initialLeaders = leaders.slice(0, 5);
-  const additionalLeaders = showAll ? leaders.slice(5) : [];
   const isDesktop = windowWidth >= 1024;
 
   const itemVariantFadeIn = {
@@ -128,6 +122,8 @@ function Leaderboard() {
     </div>
   );
 
+  const leaderboardLength = selectedOrganizationType.organizationType === 'Social' ? 4 : selectedOrganizationType.organizationType === 'Professional' ? 2 : 6;
+
   return (
     <div className="w-10/12 pb-10">
       <div className="flex justify-between items-center">
@@ -158,19 +154,15 @@ function Leaderboard() {
       {isLoading ? (
         <>
           <div className="grid grid-cols-1 gap-3 mt-4">
-            {Array.from({ length: showAll ? 10 : 5 }).map((_, index) => (
+            {Array.from({ length: leaderboardLength }).map((_, index) => (
               <LeaderboardPlaceholder key={index} />
             ))}
-          </div>
-          <div className="mt-4 flex justify-center">
-            <div className="py-2 px-4">‎</div>
           </div>
         </>
       ) : (
         <>
           <div className="grid grid-cols-1 gap-3 mt-4">
-
-            {initialLeaders.map((leader, index) => (
+            {leaders.map((leader, index) => (
               <motion.div
                 key={index}
                 className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
@@ -182,28 +174,7 @@ function Leaderboard() {
                 {isDesktop ? <DesktopLayout leader={leader} index={index} /> : <MobileLayout leader={leader} index={index} />}
               </motion.div>
             ))}
-
-            {additionalLeaders.map((leader, index) => (
-              <motion.div
-                key={`additional-${index}`}
-                className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
-                variants={itemVariantSlideUp(index)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
-                {isDesktop ? <DesktopLayout leader={leader} index={index + initialLeaders.length} /> : <MobileLayout leader={leader} index={index + initialLeaders.length} />}
-              </motion.div>
-            ))}
-
           </div>
-          {leaders.length > 5 && (
-            <div className="mt-4 flex justify-center">
-              <button onClick={() => setShowAll(!showAll)} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-                {showAll ? 'Show Less' : 'View More'}
-              </button>
-            </div>
-          )}
         </>
       )}
     </div>
