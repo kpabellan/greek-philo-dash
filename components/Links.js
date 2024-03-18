@@ -19,8 +19,8 @@ function Links() {
           <div className="p-5">
             <h3 className="text-white text-lg font-semibold mb-2">Derby Days Shirts</h3>
             <p className="text-white text-opacity-80 mb-4">Support our event by purchasing official Derby Days shirts. Remember to send you coach a recipt of your order.</p>
-            <p className="text-scyellow font-bold">30,000 points before wednesday</p>
-            <p className="text-scyellow font-bold mb-4">25,000 points otherwise</p>
+            <p className="text-scyellow font-bold">30,000 points (Now - Wednesday)</p>
+            <p className="text-scyellow font-bold mb-4">25,000 points </p>
             <a href="https://app.greekhouse.org/store/Derby-Days-2024-120910"
               target="_blank"
               rel="noopener noreferrer"

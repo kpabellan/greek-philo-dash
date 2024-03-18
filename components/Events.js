@@ -69,8 +69,8 @@ function Events() {
         <p className="mb-3 text-sm md:text-lg">
           If you find a brother on campus take a picture with him and send it to your coach to get points for your organization!
         </p>
-        <p className="text-scyellow text-lg font-bold mb-3">5,000 points per picture</p>
-        <p className="text-scyellow text-lg font-bold">6,500 points if you have your derby horse in frame</p>
+        <p className="text-scyellow text-lg font-bold mb-3">2,000 points per picture</p>
+        <p className="text-scyellow text-lg font-bold">3,000 points if you have your Derby Horse in frame</p>
       </div>
     </div>
   `;
