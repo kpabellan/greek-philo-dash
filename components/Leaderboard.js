@@ -22,6 +22,18 @@ const LeaderboardPlaceholder = () => (
   </div>
 );
 
+function toGreekLetters(organization) {
+  const greekMap = {
+    Alpha: 'A', Beta: 'B', Gamma: 'Γ', Delta: 'Δ', Epsilon: 'E',
+    Zeta: 'Z', Eta: 'H', Theta: 'Θ', Iota: 'I', Kappa: 'K',
+    Lambda: 'Λ', Mu: 'M', Nu: 'N', Xi: 'Ξ', Omicron: 'O',
+    Pi: 'Π', Rho: 'P', Sigma: 'Σ', Tau: 'T', Upsilon: 'Y',
+    Phi: 'Φ', Chi: 'X', Psi: 'Ψ', Omega: 'Ω'
+  };
+
+  return organization.split(/\s+/).map(word => greekMap[word] || '').join('');
+}
+
 function Leaderboard() {
   const [leaders, setLeaders] = useState([]);
   const [selectedOrganizationType, setSelectedOrganizationType] = useState(types[0]);
@@ -93,8 +105,8 @@ function Leaderboard() {
     <>
       <div className="flex items-center">
         <h3 className="text-3xl text-black">#{index + 1}</h3>
-        <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
-          <Image src={`/images/logos/${leader.organization.toLowerCase().replace(/\s+/g, '')}.png`} alt={leader.organization} width={100} height={100} className="w-full h-full rounded-full ring ring-white bg-scblue" />
+        <div className="flex justify-center items-center w-10 h-10 bg-scblue rounded-full ring ring-white ml-4">
+          <span className="text-sm text-white font-semibold">{toGreekLetters(leader.organization)}</span>
         </div>
         <h3 className="text-3xl pl-2 text-black text-left">{leader.organization}</h3>
       </div>
@@ -106,8 +118,8 @@ function Leaderboard() {
     <div className="flex items-center justify-between w-full">
       <div className="flex items-center">
         <h3 className="text-xl text-black">#{index + 1}</h3>
-        <div className="w-10 h-10 rounded-full bg-gray-200 ml-2">
-          <Image src={`/images/logos/${leader.organization.toLowerCase().replace(/\s+/g, '')}.png`} alt={leader.organization} width={100} height={100} className="w-full h-full rounded-full ring ring-white bg-scblue" />
+        <div className="flex justify-center items-center w-10 h-10 bg-scblue rounded-full ring ring-white ml-4">
+          <span className="text-sm text-white font-semibold">{toGreekLetters(leader.organization)}</span>
         </div>
       </div>
       <div className="flex-1 flex justify-center">
