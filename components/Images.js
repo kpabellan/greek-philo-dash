@@ -61,7 +61,7 @@ function Images() {
   return (
     <div className="w-10/12 pb-10">
       <h2 className="text-2xl">FEATURED IMAGES</h2>
-      <div className="flex justify-center items-center relative mt-4 noSelect" style={{ width: '100%', height: '500px', overflow: 'hidden' }}>
+      <div className="flex justify-center items-center relative mt-4 noSelect h-[250px] md:h-[500px]" style={{ overflow: 'hidden' }}>
         {isLoading ? (
           <div className="animate-pulse rounded-xl bg-white w-full h-full"></div>
         ) : (
