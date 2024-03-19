@@ -168,8 +168,7 @@ function Leaderboard() {
                 className="bg-scyellow h-20 p-4 rounded-md shadow-md ring ring-3 ring-white flex justify-between items-center"
                 variants={itemVariantSlideUp(index)}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
+                animate="visible"
               >
                 {isDesktop ? <DesktopLayout leader={leader} index={index} /> : <MobileLayout leader={leader} index={index} />}
               </motion.div>
