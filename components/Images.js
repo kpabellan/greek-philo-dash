@@ -61,9 +61,9 @@ function Images() {
   return (
     <div className="w-10/12 pb-10">
       <h2 className="text-2xl">FEATURED IMAGES</h2>
-      <div className="flex justify-center items-center relative mt-4 noSelect">
+      <div className="flex justify-center items-center relative mt-4 noSelect" style={{ width: '100%', height: '500px', overflow: 'hidden' }}>
         {isLoading ? (
-          <div className="animate-pulse rounded-xl bg-white w-full h-full" style={{ paddingTop: '66.66%' }}></div>
+          <div className="animate-pulse rounded-xl bg-white w-full h-full"></div>
         ) : (
           <>
             <BsArrowLeftCircleFill onClick={prevSlide} className="absolute left-1 z-10 cursor-pointer text-3xl drop-shadow-md" />
@@ -72,10 +72,10 @@ function Images() {
                 src={item.src}
                 key={idx}
                 alt={`Image ${idx + 1}`}
-                width={1920}
-                height={1080}
+                layout="fill"
+                objectFit="cover"
                 priority
-                className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-auto shadow-xl`}
+                className={`rounded-xl transition-opacity duration-500 ease-in-out ${slide === idx ? "opacity-100" : "opacity-0 absolute"} w-full h-full shadow-xl`}
               />
             ))}
             <BsArrowRightCircleFill onClick={nextSlide} className="absolute right-1 z-10 cursor-pointer text-3xl drop-shadow-md" />
