@@ -88,6 +88,7 @@ function Images() {
       ) : (
         <div className="text-center mt-2">
           <p className="text-xs"><i>Credit: {imageData[slide]?.credit} &nbsp;&bull;&nbsp; Organization: {toGreekLetters(imageData[slide]?.organization)}</i></p>
+          <p className="text-scyellow font-bold">50,000 points for every selected image</p>
         </div>
       )}
       <p className="mt-4 text-center">

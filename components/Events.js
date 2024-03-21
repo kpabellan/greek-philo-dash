@@ -99,11 +99,11 @@ function Events() {
   
   const htmlFriday = `
     <div class="bg-scblue text-center max-w-2xl mx-auto">
-      <p class="my-2 text-lg md:text-xl">9pm - 10pm</p>
+      <p class="my-2 text-lg md:text-xl">4pm - 6pm</p>
     
       <div class="text-center text-sm md:text-lg">
-        <p class="mb-3"> Come to ACS 120 for the Derby Days Finale. Participating organizations bid on volunteering brothers to have their head shaved. The points go to the highest bidder! </p>
-        <p class="text-scyellow text-lg font-bold mb-3"> 1,000 points for every dollar bid going to the winning bid </p>
+        <p class="mb-3"> Come to <a href="https://maps.app.goo.gl/Kr94TGsMHUwpChpE9" target="_blank" rel="noopener noreferrer" class="font-bold underline">Via Moraga Park</a> at the baseball field for the Derby Days Finale. Participating organizations bid on volunteering brothers to have their head shaved. The points go to the highest bidder! </p>
+        <p class="text-scyellow text-lg font-bold mb-3"> 2,500 points for every dollar bid going to the winning bid </p>
       </div>
     
       <div class="text-center text-lg mt-5">
