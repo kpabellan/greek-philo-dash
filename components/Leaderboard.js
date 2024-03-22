@@ -60,7 +60,7 @@ function Leaderboard() {
         const data = await res.json();
 
         if (Array.isArray(data.leaders)) {
-          setLeaders(data.leaders.sort((a, b) => b.score - a.score));
+          setLeaders(data.leaders.sort(() => Math.random() - 0.5));
         } else {
           setLeaders([]);
         }
@@ -104,7 +104,7 @@ function Leaderboard() {
         </div>
         <h3 className="text-3xl pl-2 text-black text-left">{leader.organization}</h3>
       </div>
-      <p className="text-3xl text-black">{leader.score.toLocaleString()}</p>
+      <p className="text-3xl text-black">???</p>
     </>
   );
 
@@ -117,7 +117,7 @@ function Leaderboard() {
         </div>
       </div>
       <div className="flex-1 flex justify-center">
-        <h3 className="text-3xl text-black text-center">{leader.score.toLocaleString()}</h3>
+        <h3 className="text-3xl text-black text-center">???</h3>
       </div>
     </div>
   );
